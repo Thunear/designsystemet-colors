@@ -1,0 +1,16 @@
+.group {
+}
+
+.colors {
+  display: flex;
+  gap: 4px;
+  border-radius: 0px;
+}
+
+.header {
+  border-bottom: 1px solid #c2c2c2;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  text-align: center;
+  width: 100%;
+}

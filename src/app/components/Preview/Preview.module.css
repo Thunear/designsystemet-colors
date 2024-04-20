@@ -1,0 +1,6 @@
+.preview {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}

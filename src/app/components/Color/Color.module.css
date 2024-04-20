@@ -1,0 +1,49 @@
+.box {
+  height: 58px;
+  width: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-weight: 400;
+  border: 1px solid rgb(236, 236, 236);
+  border-radius: 2px;
+}
+
+.featured {
+  border: 5px solid black;
+  font-weight: 600;
+}
+
+.whiteText {
+  color: white !important;
+}
+
+.colorTest {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: 1px solid rgb(160, 160, 160);
+}
+
+.contrast {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.lightness {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 6px;
+  margin-left: -2px;
+  margin-top: 12px;
+}
+
+.hex {
+  font-size: 15px;
+  margin-top: 12px;
+}
