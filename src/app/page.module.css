@@ -51,3 +51,38 @@
 .red {
   color: rgb(202, 0, 0);
 }
+
+.swatchContainer {
+  border: 1px solid rgb(192, 192, 192);
+  height: 260px;
+  width: 495px;
+  padding: 20px;
+  margin-right: 32px;
+  border-radius: 4px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tom {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 16px;
+}
+
+.swatch {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.swatch:hover {
+  cursor: pointer;
+}
+
+.swatches {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

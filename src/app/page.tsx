@@ -190,9 +190,90 @@ export default function Home() {
     setColors(test);
   }, [color]);
 
+  const tomato = (color: string) => {
+    setColor(color);
+  };
+
   return (
     <main className={classes.main}>
       <div className={classes.top}>
+        <div className={classes.swatchContainer}>
+          <div className={classes.tom}>
+            <div>Designsystemet:</div>
+            <div className={classes.swatches}>
+              <div
+                className={classes.swatch}
+                style={{ backgroundColor: "#0062BA" }}
+                onClick={() => tomato("#0062BA")}
+              ></div>
+              <div
+                className={classes.swatch}
+                style={{ backgroundColor: "#2BA63C" }}
+                onClick={() => tomato("#2BA63C")}
+              ></div>
+              <div
+                className={classes.swatch}
+                style={{ backgroundColor: "#ECC238" }}
+                onClick={() => tomato("#ECC238")}
+              ></div>
+              <div
+                className={classes.swatch}
+                style={{ backgroundColor: "#B32728" }}
+                onClick={() => tomato("#B32728")}
+              ></div>
+              <div
+                className={classes.swatch}
+                style={{ backgroundColor: "#1E2B3C" }}
+                onClick={() => tomato("#1E2B3C")}
+              ></div>
+              <div
+                className={classes.swatch}
+                style={{ backgroundColor: "#F45F63" }}
+                onClick={() => tomato("#F45F63")}
+              ></div>
+              <div
+                className={classes.swatch}
+                style={{ backgroundColor: "#E5AA20" }}
+                onClick={() => tomato("#E5AA20")}
+              ></div>
+              <div
+                className={classes.swatch}
+                style={{ backgroundColor: "#1E98F5" }}
+                onClick={() => tomato("#1E98F5")}
+              ></div>
+            </div>
+          </div>
+          <div className={classes.tom}>
+            <div>Mattilsynet:</div>
+            <div className={classes.swatches}>
+              <div
+                className={classes.swatch}
+                style={{ backgroundColor: "#054449" }}
+                onClick={() => tomato("#054449")}
+              ></div>
+            </div>
+          </div>
+          <div className={classes.tom}>
+            <div>Brreg:</div>
+            <div className={classes.swatches}>
+              <div
+                className={classes.swatch}
+                style={{ backgroundColor: "#133349" }}
+                onClick={() => tomato("#133349")}
+              ></div>
+            </div>
+          </div>
+          <div className={classes.tom}>
+            <div>Arbeidstilsynet:</div>
+            <div className={classes.swatches}>
+              <div
+                className={classes.swatch}
+                style={{ backgroundColor: "#a0e6df" }}
+                onClick={() => tomato("#a0e6df")}
+              ></div>
+            </div>
+          </div>
+        </div>
         <ChromePicker
           onChange={(e) => {
             setColor(e.hex);
