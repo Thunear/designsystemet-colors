@@ -285,6 +285,10 @@ export default function Home() {
           <div>{color}</div>
           <div>Contrast: {colors.solids[0]?.text}</div>
           <div
+            className={classes.previewColor}
+            style={{ backgroundColor: color }}
+          ></div>
+          <div
             className={cn(classes.icon, {
               [classes.red]: colors.solids[0]?.text < 4.5,
             })}
