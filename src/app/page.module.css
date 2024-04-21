@@ -3,53 +3,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 60px 25px;
+  margin: 10px 25px;
   font-size: 18px;
+  margin-top: 48px;
 }
-
-.test {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  margin-top: 50px;
-}
-
 .colors {
   display: flex;
 }
 
 .top {
   display: flex;
-}
-
-.selectedColor {
-  border: 1px solid rgb(192, 192, 192);
-  height: 260px;
-  width: 250px;
-  padding: 20px;
-  margin-left: 32px;
-  border-radius: 4px;
-}
-
-.selectedColor > div {
-  margin-bottom: 10px;
-}
-
-.icon {
-  width: 100%;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: green;
-}
-
-.icon svg {
-  font-size: 80px;
-}
-
-.red {
-  color: rgb(202, 0, 0);
 }
 
 .swatchContainer {
@@ -85,12 +48,4 @@
   display: flex;
   align-items: center;
   gap: 10px;
-}
-
-.previewColor {
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
-
-  margin-top: 20px;
 }

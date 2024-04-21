@@ -1,0 +1,11 @@
+.test {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.themes {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}

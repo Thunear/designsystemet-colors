@@ -1,11 +1,12 @@
 import classes from "./Group.module.css";
 import { Color } from "../Color/Color";
+import { CssColor } from "@adobe/leonardo-contrast-colors";
 
 type ColorType = {
-  color: string;
+  color: CssColor;
   text: string;
-  lightness?: string;
-  whiteText?: boolean;
+  whiteText: boolean;
+  lightness: string;
 };
 
 type GroupProps = {
@@ -16,7 +17,7 @@ type GroupProps = {
 export const Group = ({ header, colors }: GroupProps) => {
   return (
     <div className={classes.group}>
-      <div className={classes.header}>{header}</div>
+      {header && <div className={classes.header}>{header}</div>}
       <div className={classes.colors}>
         {colors.map(function (item, index) {
           return (

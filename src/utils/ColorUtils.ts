@@ -1,3 +1,6 @@
+import { CssColor } from "@adobe/leonardo-contrast-colors";
+import { Hsluv } from "hsluv";
+
 export const hexToCssHsl = (hex: string, valuesOnly = false) => {
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   var r = parseInt(result[1], 16);
@@ -165,4 +168,44 @@ export const luminanceFromHex = (hex: string) => {
 
 export const getRatioFromLum = (lum1: number, lum2: number) => {
   return (Math.max(lum1, lum2) + 0.05) / (Math.min(lum1, lum2) + 0.05);
+};
+
+export const getLightnessFromHex = (hex: string) => {
+  var conv = new Hsluv();
+  conv.hex = hex;
+  conv.hexToHsluv();
+  return Number(conv.hsluv_l.toFixed(0));
+};
+
+export const getContrastFromLightness = (
+  lightness: number,
+  mainColor: CssColor,
+  backgroundColor: CssColor
+) => {
+  var conv = new Hsluv();
+  conv.hex = mainColor;
+  conv.hexToHsluv();
+  conv.hsluv_l = lightness;
+  conv.hsluvToHex();
+  let lightMainColor = conv.hex;
+  let lum1 = luminanceFromHex(lightMainColor);
+  let lum2 = luminanceFromHex(backgroundColor);
+  let ratio = getRatioFromLum(lum1, lum2);
+
+  return ratio;
+};
+
+export const lightenDarkThemeColor = (color: CssColor) => {
+  let lightness = getLightnessFromHex(color);
+
+  if (lightness > 45) {
+    return color;
+  }
+
+  var conv = new Hsluv();
+  conv.hex = color;
+  conv.hexToHsluv();
+  conv.hsluv_l = conv.hsluv_l + 10;
+  conv.hsluvToHex();
+  return conv.hex as CssColor;
 };
