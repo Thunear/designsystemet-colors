@@ -23,6 +23,12 @@ export const Header = () => {
           >
             Liste over fargeskalaer
           </Link>
+          <Link
+            className={currentPath === "/om-verktoyet" ? classes.active : ""}
+            href="/om-verktoyet"
+          >
+            Om verktøyet
+          </Link>
         </div>
       </Container>
     </header>

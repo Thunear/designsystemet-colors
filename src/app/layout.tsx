@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "../css/bootstrap-grid.css";
 import "./globals.css";
 import "@digdir/designsystemet-theme";
 import "@digdir/designsystemet-css";

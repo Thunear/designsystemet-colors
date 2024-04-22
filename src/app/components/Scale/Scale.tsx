@@ -94,7 +94,7 @@ export const Scale = ({ color, showHeader, showColorMeta }: ScaleProps) => {
     });
 
     let colorLightness = getLightnessFromHex(color);
-    let multiplier = colorLightness <= 30 ? -11 : 11;
+    let multiplier = colorLightness <= 30 ? -9 : 9;
     let solidContrast = getContrastFromLightness(
       colorLightness,
       color,
@@ -213,15 +213,66 @@ export const Scale = ({ color, showHeader, showColorMeta }: ScaleProps) => {
       "--fds-semantic-surface-action-first-default",
       color
     );
-
     document.documentElement.style.setProperty(
       "--fds-semantic-surface-action-first-hover",
       tempColors.solids[1].color
+    );
+    document.documentElement.style.setProperty(
+      "--fds-semantic-surface-action-first-active",
+      tempColors.solids[2].color
     );
 
     document.documentElement.style.setProperty(
       "--fds-semantic-surface-success-default",
       color
+    );
+    document.documentElement.style.setProperty(
+      "--fds-semantic-surface-success-hover",
+      tempColors.solids[1].color
+    );
+
+    document.documentElement.style.setProperty(
+      "--fds-semantic-surface-action-first-subtle",
+      tempColors.components[0].color
+    );
+    document.documentElement.style.setProperty(
+      "--fds-semantic-surface-action-first-subtle-hover",
+      tempColors.components[1].color
+    );
+    document.documentElement.style.setProperty(
+      "--fds-semantic-surface-action-first-subtle-active",
+      tempColors.components[2].color
+    );
+    document.documentElement.style.setProperty(
+      "--fds-semantic-border-action-first-subtle",
+      tempColors.borders[0].color
+    );
+    document.documentElement.style.setProperty(
+      "--fds-semantic-border-action-first-subtle-hover",
+      tempColors.borders[1].color
+    );
+
+    document.documentElement.style.setProperty(
+      "--fds-semantic-border-input-default",
+      "#808489"
+    );
+    document.documentElement.style.setProperty(
+      "--fds-semantic-border-input-hover",
+      tempColors.solids[0].color
+    );
+    document.documentElement.style.setProperty(
+      "--fds-checkbox-border-color",
+      tempColors.solids[0].color
+    );
+
+    document.documentElement.style.setProperty(
+      "--fds-semantic-surface-info-subtle-hover",
+      tempColors.components[1].color
+    );
+
+    document.documentElement.style.setProperty(
+      "--fds-semantic-border-action-first-default",
+      tempColors.borders[1].color
     );
   }, [color]);
   return (

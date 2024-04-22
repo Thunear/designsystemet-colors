@@ -17,8 +17,12 @@
   font-size: 18px;
 }
 
+.links a:hover {
+  border-color: rgb(212, 212, 212);
+}
+
 .container {
-  height: 100px;
+  height: 96px;
   display: flex;
   align-items: center;
   justify-content: space-between;
