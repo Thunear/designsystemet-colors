@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif !important;
   color: #1e2b3c;
 }
 

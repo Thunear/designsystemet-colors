@@ -19,6 +19,7 @@ import {
 type ScaleProps = {
   color: CssColor;
   showHeader?: boolean;
+  showColorMeta?: boolean;
 };
 
 type ColorType = {
@@ -68,7 +69,7 @@ const addColorsToTempArray = (themeValues: any, tempArray: ColorsType) => {
   }
 };
 
-export const Scale = ({ color, showHeader }: ScaleProps) => {
+export const Scale = ({ color, showHeader, showColorMeta }: ScaleProps) => {
   const [colors, setColors] = useState<ColorsType>({
     backgrounds: [],
     components: [],
@@ -205,36 +206,59 @@ export const Scale = ({ color, showHeader }: ScaleProps) => {
     };
 
     addColorsToTempArray(darkThemeValues, darkTempColors);
+    setColors(tempColors);
+    setDarkColors(darkTempColors);
 
     document.documentElement.style.setProperty(
       "--fds-semantic-surface-action-first-default",
       color
     );
 
-    setColors(tempColors);
-    setDarkColors(darkTempColors);
+    document.documentElement.style.setProperty(
+      "--fds-semantic-surface-action-first-hover",
+      tempColors.solids[1].color
+    );
+
+    document.documentElement.style.setProperty(
+      "--fds-semantic-surface-success-default",
+      color
+    );
   }, [color]);
   return (
     <div className={classes.themes}>
       <div className={classes.test}>
         <Group
-          header={showHeader ? "Backgrounds" : ""}
+          header={showHeader ? "Bakgrunner" : ""}
           colors={colors.backgrounds}
+          showColorMeta={showColorMeta}
         />
         <Group
-          header={showHeader ? "Component UI" : ""}
+          header={showHeader ? "Komponent UI" : ""}
           colors={colors.components}
+          showColorMeta={showColorMeta}
         />
-        <Group header={showHeader ? "Borders" : ""} colors={colors.borders} />
-        <Group header={showHeader ? "Solids" : ""} colors={colors.solids} />
-        <Group header={showHeader ? "Text" : ""} colors={colors.text} />
+        <Group
+          showColorMeta={showColorMeta}
+          header={showHeader ? "Kanter" : ""}
+          colors={colors.borders}
+        />
+        <Group
+          showColorMeta={showColorMeta}
+          header={showHeader ? "Solide farger" : ""}
+          colors={colors.solids}
+        />
+        <Group
+          showColorMeta={showColorMeta}
+          header={showHeader ? "Tekst" : ""}
+          colors={colors.text}
+        />
       </div>
       <div className={classes.test}>
-        <Group colors={darkColors.backgrounds} />
-        <Group colors={darkColors.components} />
-        <Group colors={darkColors.borders} />
-        <Group colors={darkColors.solids} />
-        <Group colors={darkColors.text} />
+        <Group showColorMeta={showColorMeta} colors={darkColors.backgrounds} />
+        <Group showColorMeta={showColorMeta} colors={darkColors.components} />
+        <Group showColorMeta={showColorMeta} colors={darkColors.borders} />
+        <Group showColorMeta={showColorMeta} colors={darkColors.solids} />
+        <Group showColorMeta={showColorMeta} colors={darkColors.text} />
       </div>
     </div>
   );

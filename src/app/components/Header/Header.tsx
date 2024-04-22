@@ -1,0 +1,30 @@
+import { Container } from "react-bootstrap";
+import Link from "next/link";
+import classes from "./Header.module.css";
+import { usePathname } from "next/navigation";
+
+export const Header = () => {
+  const currentPath = usePathname();
+  return (
+    <header className={classes.header}>
+      <Container className={classes.container}>
+        <div>
+          <Link href="/">
+            <img src="img/logo.svg" alt="" />
+          </Link>
+        </div>
+        <div className={classes.links}>
+          <Link className={currentPath === "/" ? classes.active : ""} href="/">
+            Fargevelger
+          </Link>
+          <Link
+            className={currentPath === "/scale-list" ? classes.active : ""}
+            href="/scale-list"
+          >
+            Liste over fargeskalaer
+          </Link>
+        </div>
+      </Container>
+    </header>
+  );
+};

@@ -6,7 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import { getRatioFromLum, luminanceFromHex } from "@/utils/ColorUtils";
 import { CheckmarkIcon, XMarkIcon } from "@navikt/aksel-icons";
 import { ChromePicker } from "react-color";
-import { Modal, Button } from "@digdir/designsystemet-react";
+
+import { useClickOutside } from "@react-awesome/use-click-outside";
 
 type ScaleRowProps = {
   color: CssColor;
@@ -17,7 +18,9 @@ type ScaleRowProps = {
 export const ScaleRow = ({ color, showHeader, name }: ScaleRowProps) => {
   const [contrast, setContrast] = useState<number>(0);
   const [activeColor, setActiveColor] = useState<CssColor>("#000000");
-  const modalRef = useRef<HTMLDialogElement>(null);
+  const [showPicker, setShowPicker] = useState(false);
+  const ref = useRef(null);
+
   useEffect(() => {
     let lum1 = luminanceFromHex(color);
     let lum2 = luminanceFromHex("#ffffff");
@@ -26,47 +29,47 @@ export const ScaleRow = ({ color, showHeader, name }: ScaleRowProps) => {
     setActiveColor(color);
   }, [color]);
 
+  useClickOutside(ref.current, () => {
+    setShowPicker(false);
+  });
+
+  const handleClick = () => {
+    setShowPicker(!showPicker);
+  };
+
   return (
     <div className={classes.row}>
       <div className={classes.selectedColor}>
         <div className={classes.name}>{name}</div>
-        <div className={classes.tt}>
+        <div ref={ref} className={classes.tomato}>
+          <div className={classes.tt} onClick={() => handleClick()}>
+            <div
+              className={classes.previewColor}
+              style={{ backgroundColor: activeColor }}
+            ></div>
+            <div className={classes.picker}>
+              <div>Velg farge</div>
+            </div>
+          </div>
           <div
-            className={classes.previewColor}
-            style={{ backgroundColor: activeColor }}
-          ></div>
-          <div className={classes.picker}>
-            <Modal.Root>
-              <Modal.Trigger asChild>
-                <Button size="small" variant="tertiary" color="second">
-                  Velg farge
-                </Button>
-              </Modal.Trigger>
-              <Modal.Dialog
-                ref={modalRef}
-                onInteractOutside={() => modalRef.current?.close()}
-              >
-                <Modal.Header>Velg farge</Modal.Header>
-                <Modal.Content>
-                  <ChromePicker
-                    onChange={(e) => {
-                      let lum1 = luminanceFromHex(e.hex);
-                      let lum2 = luminanceFromHex("#ffffff");
-                      let ratio = getRatioFromLum(lum1, lum2);
-                      setContrast(ratio);
-                      setActiveColor(e.hex);
-                    }}
-                    color={activeColor}
-                    width={250}
-                  />
-                </Modal.Content>
-              </Modal.Dialog>
-            </Modal.Root>
-
-            <div></div>
+            className={cn(classes.pickerTool, {
+              [classes.showPickerTool]: showPicker,
+            })}
+          >
+            <ChromePicker
+              onChange={(e) => {
+                let lum1 = luminanceFromHex(e.hex);
+                let lum2 = luminanceFromHex("#ffffff");
+                let ratio = getRatioFromLum(lum1, lum2);
+                setContrast(ratio);
+                setActiveColor(e.hex);
+              }}
+              color={activeColor}
+              width={250}
+            />
           </div>
         </div>
-        <div>{color}</div>
+        <div>{activeColor}</div>
         <div className={classes.contrast}>
           Contrast: {contrast.toFixed(2)}
           <div

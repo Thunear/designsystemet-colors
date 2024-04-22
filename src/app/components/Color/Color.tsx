@@ -10,6 +10,7 @@ type ColorProps = {
   featured?: boolean;
   whiteText?: boolean;
   hex?: string;
+  showColorMeta?: boolean;
 };
 
 const Color = ({
@@ -19,6 +20,7 @@ const Color = ({
   whiteText,
   lightness,
   hex,
+  showColorMeta = true,
 }: ColorProps) => {
   return (
     <div>
@@ -30,15 +32,19 @@ const Color = ({
           { [classes.whiteText]: whiteText }
         )}
       ></div>
-      <div className={classes.hex}>{hex}</div>
-      <div className={classes.contrast}>
-        <div className={classes.colorTest}></div>
-        {contrast}
-      </div>
-      <div className={classes.lightness}>
-        <SunIcon title="a11y-title" fontSize="1.3rem" />
-        {lightness}
-      </div>
+      {showColorMeta && (
+        <>
+          <div className={classes.hex}>{hex}</div>
+          <div className={classes.contrast}>
+            <div className={classes.colorTest}></div>
+            {contrast}
+          </div>
+          <div className={classes.lightness}>
+            <SunIcon title="a11y-title" fontSize="1.3rem" />
+            {lightness}
+          </div>
+        </>
+      )}
     </div>
   );
 };

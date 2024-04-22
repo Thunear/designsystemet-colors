@@ -2,25 +2,43 @@
 
 import classes from "./page.module.css";
 import { Preview } from "./components/Preview/Preview";
-
-import { ScaleRow } from "./components/ScaleRow/ScaleRow";
+import { Header } from "./components/Header/Header";
+import { Scale } from "./components/Scale/Scale";
+import { ColorPicker } from "./components/ColorPicker/ColorPicker";
+import { useState } from "react";
+import { CssColor } from "@adobe/leonardo-contrast-colors";
+import { PreviewBox } from "./components/PreviewBox/PreviewBox";
+import { Container } from "react-bootstrap";
 
 export default function Home() {
+  const [accentColor, setAccentColor] = useState<CssColor>("#F45F63");
   return (
-    <main className={classes.main}>
-      <ScaleRow name="Accent" color="#0062BA" showHeader />
-      <ScaleRow name="Success" color="#2BA63C" />
-      <ScaleRow name="Warning" color="#ECC238" />
-      <ScaleRow name="Danger" color="#B32728" />
-      <ScaleRow name="Grey" color="#1E2B3C" />
-      <ScaleRow name="Brand 1" color="#F45F63" />
-      <ScaleRow name="Brand 2" color="#E5AA20" />
-      <ScaleRow name="Brand 3" color="#1E98F5" />
-      <ScaleRow name="Mattilsynet" color="#054449" />
-      <ScaleRow name="Brreg" color="#133349" />
-      <ScaleRow name="Arbeidstilsynet" color="#086057" />
-
-      {/* <Preview colors={colors} /> */}
-    </main>
+    <div>
+      <Header />
+      <main className={classes.main}>
+        <Container>
+          <div>
+            <h1 className={classes.title}>Velg farger</h1>
+            <div className={classes.box}>
+              <ColorPicker
+                label="Accent farge"
+                defaultColor="#F45F63"
+                onColorChanged={(e) => {
+                  setAccentColor(e);
+                }}
+              />
+              <ColorPicker disabled label="Gråfarge" defaultColor="#1E2B3C" />
+              <ColorPicker
+                disabled
+                label="Bakgrunnsfarge"
+                defaultColor="#ffffff"
+              />
+            </div>
+          </div>
+          <Scale color={accentColor} showHeader showColorMeta={false} />
+          <PreviewBox />
+        </Container>
+      </main>
+    </div>
   );
 }

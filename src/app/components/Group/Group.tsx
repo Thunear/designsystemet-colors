@@ -12,9 +12,10 @@ type ColorType = {
 type GroupProps = {
   header: string;
   colors: ColorType[];
+  showColorMeta?: boolean;
 };
 
-export const Group = ({ header, colors }: GroupProps) => {
+export const Group = ({ header, colors, showColorMeta }: GroupProps) => {
   return (
     <div className={classes.group}>
       {header && <div className={classes.header}>{header}</div>}
@@ -28,6 +29,7 @@ export const Group = ({ header, colors }: GroupProps) => {
               whiteText={item.whiteText}
               lightness={item.lightness}
               hex={item.color}
+              showColorMeta={showColorMeta}
             />
           );
         })}

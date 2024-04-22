@@ -1,7 +1,8 @@
 .previewColor {
-  height: 32px;
-  width: 32px;
-  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  border-radius: 3px 0 0 3px;
+  margin-right: 12px;
 }
 
 .row {
@@ -36,6 +37,18 @@
   align-items: center;
   margin-top: 10px;
   margin-bottom: 16px;
+  border: 1px solid rgb(206, 206, 206);
+  border-radius: 4px;
+  font-size: 16px;
+  position: relative;
+}
+
+.tt:hover {
+  cursor: pointer;
+}
+
+.tomato {
+  position: relative;
 }
 
 .selectedColor {
@@ -44,7 +57,7 @@
   width: 170px;
   margin-top: 2px;
   /* padding: 20px; */
-  margin-right: 32px;
+  margin-right: 48px;
   border-radius: 4px;
   font-size: 16px;
 }
@@ -53,4 +66,15 @@
   font-weight: 500;
   font-size: 17px;
   margin-bottom: 16px;
+}
+
+.pickerTool {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 46px;
+}
+
+.showPickerTool {
+  display: block;
 }
