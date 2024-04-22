@@ -21,23 +21,22 @@ export default function Home() {
           <ul>
             <li>
               Brukeren legger inn sin accent farge og verktøyet genererer alle
-              fargane automatisk. Denne fargen blir lagt til som solid default i
+              fargene automatisk. Denne fargen blir lagt til som solid default i
               skalaen.
             </li>
             <li>
-              <b>Solid hover og active i light mode:</b> 9 lumenance blir lagt
-              til hover og 18 lumenance til active fargen som standard basert på
-              accent fargen. Om accent fargen har ein lumenance på mindre enn
-              30/100, så blir lumenance modifieren negativ (fargene blir
-              lysere).
+              <b>Solid hover og active:</b> 9 lumenance blir lagt til hover og
+              18 lumenance til active fargen som standard basert på accent
+              fargen. Om accent fargen har ein lumenance på mindre enn 30/100,
+              så blir lumenance modifieren negativ (fargene blir lysere).
             </li>
             <li>
-              <b>Solid hover og active i dark mode:</b> Samme logikk som over.
+              <b>Solid hover og active (Dark mode):</b> Samme logikk som over.
             </li>
             <li>
               <b>Dark mode accent farge:</b> Om accent fargen som brukeren
               setter inn har ein lumenance på mindre enn 45/100, så blir accent
-              fargen i darkmode accent + 10.
+              fargen i darkmode accent + 10 lumenance.
             </li>
           </ul>
         </Container>

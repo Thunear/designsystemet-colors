@@ -282,26 +282,31 @@ export const Scale = ({ color, showHeader, showColorMeta }: ScaleProps) => {
           header={showHeader ? "Bakgrunner" : ""}
           colors={colors.backgrounds}
           showColorMeta={showColorMeta}
+          names={["Subtle", "Default"]}
         />
         <Group
           header={showHeader ? "Komponent UI" : ""}
           colors={colors.components}
           showColorMeta={showColorMeta}
+          names={["Normal", "Hover", "Active"]}
         />
         <Group
           showColorMeta={showColorMeta}
           header={showHeader ? "Kanter" : ""}
           colors={colors.borders}
+          names={["Subtle", "Default", "Strong"]}
         />
         <Group
           showColorMeta={showColorMeta}
           header={showHeader ? "Solide farger" : ""}
           colors={colors.solids}
+          names={["Normal", "Hover", "Active"]}
         />
         <Group
           showColorMeta={showColorMeta}
           header={showHeader ? "Tekst" : ""}
           colors={colors.text}
+          names={["Subtle", "Default"]}
         />
       </div>
       <div className={classes.test}>

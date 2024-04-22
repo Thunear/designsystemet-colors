@@ -13,12 +13,20 @@ type GroupProps = {
   header: string;
   colors: ColorType[];
   showColorMeta?: boolean;
+  names?: string[];
 };
 
-export const Group = ({ header, colors, showColorMeta }: GroupProps) => {
+export const Group = ({ header, colors, showColorMeta, names }: GroupProps) => {
   return (
     <div className={classes.group}>
       {header && <div className={classes.header}>{header}</div>}
+      {header && names && (
+        <div className={classes.names}>
+          {names.map((name, index) => (
+            <div key={index}>{name}</div>
+          ))}
+        </div>
+      )}
       <div className={classes.colors}>
         {colors.map(function (item, index) {
           return (
