@@ -8,10 +8,11 @@ export const Header = () => {
   return (
     <header className={classes.header}>
       <Container className={classes.container}>
-        <div>
+        <div className={classes.logoContainer}>
           <Link href="/">
             <img src="img/logo.svg" alt="" />
           </Link>
+          <div className={classes.tag}>Work in progress</div>
         </div>
         <div className={classes.links}>
           <Link className={currentPath === "/" ? classes.active : ""} href="/">

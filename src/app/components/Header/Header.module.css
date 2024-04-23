@@ -32,3 +32,17 @@
   border-color: grey !important;
   font-weight: 500;
 }
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.tag {
+  background-color: rgb(250, 211, 255);
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-weight: 500;
+}
