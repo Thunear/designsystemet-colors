@@ -126,7 +126,7 @@ export const Scale = ({ color, showHeader, showColorMeta }: ScaleProps) => {
         solidContrast,
         solidHoverContrast,
         solidActiveContrast,
-        getContrastFromLightness(40, color, leoBackgroundColor.colorKeys[0]),
+        getContrastFromLightness(35, color, leoBackgroundColor.colorKeys[0]),
         getContrastFromLightness(20, color, leoBackgroundColor.colorKeys[0]),
       ],
     });
@@ -184,7 +184,7 @@ export const Scale = ({ color, showHeader, showColorMeta }: ScaleProps) => {
         darkSolidContrast,
         darkSolidHoverContrast,
         darkSolidActiveContrast,
-        getContrastFromLightness(60, color, leoBackgroundColor.colorKeys[0]),
+        getContrastFromLightness(65, color, leoBackgroundColor.colorKeys[0]),
         getContrastFromLightness(80, color, leoBackgroundColor.colorKeys[0]),
       ],
     });
