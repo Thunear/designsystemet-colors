@@ -32,7 +32,7 @@ export default function Home() {
                 })}
                 onClick={() => setThemeMode("light")}
               >
-                <img src="/img/light-dot.svg" alt="" /> Lys
+                <img src="img/light-dot.svg" alt="" /> Lys
               </button>
               <button
                 className={cn(classes.toggle, {
@@ -40,7 +40,7 @@ export default function Home() {
                 })}
                 onClick={() => setThemeMode("dark")}
               >
-                <img src="/img/dark-dot.svg" alt="" /> Mørk
+                <img src="img/dark-dot.svg" alt="" /> Mørk
               </button>
               <button
                 className={cn(classes.toggle, {
@@ -48,7 +48,7 @@ export default function Home() {
                 })}
                 onClick={() => setThemeMode("contrast")}
               >
-                <img src="/img/contrast-dot.svg" alt="" /> Kontrast
+                <img src="img/contrast-dot.svg" alt="" /> Kontrast
               </button>
             </div>
 
