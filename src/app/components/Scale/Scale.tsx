@@ -238,9 +238,9 @@ export const Scale = ({
       lightColors.backgrounds[1].color
     );
 
-    setToken(
-      "--fds-semantic-surface-action-first-hover",
-      lightColors.solids[1].color
+    document.documentElement.style.setProperty(
+      "--fds-semantic-surface-action-first-default",
+      color
     );
     document.documentElement.style.setProperty(
       "--fds-semantic-surface-action-first-hover",
