@@ -23,7 +23,7 @@ const Color = ({
   hex,
   showColorMeta = true,
 }: ColorProps) => {
-  const [tooltipText, setTooltipText] = useState("Kopier hexverdi");
+  const [tooltipText, setTooltipText] = useState("Kopier hexverdi " + hex);
   return (
     <div>
       <Tooltip content={tooltipText} placement="top">
@@ -36,7 +36,7 @@ const Color = ({
             setTooltipText("Kopier hexverdi");
           }}
           onMouseEnter={() => {
-            setTooltipText("Kopier hexverdi");
+            setTooltipText(hex);
           }}
           style={{ backgroundColor: color }}
           className={cn(
