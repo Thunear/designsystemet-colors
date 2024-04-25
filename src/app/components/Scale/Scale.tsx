@@ -2,7 +2,7 @@ import classes from "./Scale.module.css";
 import { Group } from "../Group/Group";
 import { useEffect, useState } from "react";
 import { CssColor } from "@adobe/leonardo-contrast-colors";
-
+import { tokenMapping as tokens } from "@/utils/tokenMapping";
 import { buildColorScale } from "@/utils/themeUtils";
 
 type ScaleProps = {
@@ -33,6 +33,12 @@ const setToken = (token: string, color: string) => {
   const previewElement = document.getElementById("preview");
   if (previewElement) {
     previewElement.style.setProperty(token, color);
+  }
+};
+
+const setTokens = (tokens: string[], color: string) => {
+  for (const token of tokens) {
+    setToken(token, color);
   }
 };
 
@@ -75,113 +81,44 @@ export const Scale = ({
         );
       }
 
-      setToken(
-        "--fds-semantic-text-neutral-default",
-        lightColors.text[1].color
-      );
-      setToken("--fds-semantic-text-neutral-subtle", lightColors.text[0].color);
+      // Background subtle
+      setTokens(tokens.background.subtle, lightColors.backgrounds[0].color);
 
-      setToken(
-        "--fds-semantic-background-default",
-        lightColors.backgrounds[0].color
-      );
-      setToken(
-        "--fds-semantic-background-subtle",
-        lightColors.backgrounds[1].color
-      );
+      // Background default
+      setTokens(tokens.background.default, lightColors.backgrounds[1].color);
 
-      document.documentElement.style.setProperty(
-        "--fds-semantic-surface-action-first-default",
-        color
-      );
-      document.documentElement.style.setProperty(
-        "--fds-semantic-surface-action-first-hover",
-        lightColors.solids[1].color
-      );
-      document.documentElement.style.setProperty(
-        "--fds-semantic-surface-action-first-active",
-        lightColors.solids[2].color
-      );
+      // Component normal
+      setTokens(tokens.component.normal, lightColors.components[0].color);
 
-      document.documentElement.style.setProperty(
-        "--fds-semantic-surface-success-default",
-        color
-      );
-      document.documentElement.style.setProperty(
-        "--fds-semantic-surface-success-hover",
-        lightColors.solids[1].color
-      );
+      // Component hover
+      setTokens(tokens.component.normal, lightColors.components[1].color);
 
-      document.documentElement.style.setProperty(
-        "--fds-semantic-surface-action-first-subtle",
-        lightColors.components[0].color
-      );
-      document.documentElement.style.setProperty(
-        "--fds-semantic-surface-action-first-subtle-hover",
-        lightColors.components[1].color
-      );
-      document.documentElement.style.setProperty(
-        "--fds-semantic-surface-action-first-subtle-active",
-        lightColors.components[2].color
-      );
-      document.documentElement.style.setProperty(
-        "--fds-semantic-border-action-first-subtle",
-        lightColors.borders[0].color
-      );
-      document.documentElement.style.setProperty(
-        "--fds-semantic-border-action-first-subtle-hover",
-        lightColors.borders[1].color
-      );
+      // Component active
+      setTokens(tokens.component.active, lightColors.components[2].color);
 
-      document.documentElement.style.setProperty(
-        "--fds-semantic-border-input-default",
-        darkColors.borders[2].color
-      );
-      document.documentElement.style.setProperty(
-        "--fds-semantic-border-input-hover",
-        lightColors.solids[0].color
-      );
-      document.documentElement.style.setProperty(
-        "--fds-checkbox-border-color",
-        lightColors.solids[0].color
-      );
+      // Border subtle
+      setTokens(tokens.border.subtle, lightColors.borders[0].color);
 
-      document.documentElement.style.setProperty(
-        "--fds-semantic-surface-info-subtle-hover",
-        lightColors.components[1].color
-      );
+      // Border default
+      setTokens(tokens.border.default, lightColors.borders[1].color);
 
-      document.documentElement.style.setProperty(
-        "--fds-semantic-border-action-first-default",
-        lightColors.borders[2].color
-      );
+      // Border strong
+      setTokens(tokens.border.strong, lightColors.borders[2].color);
 
-      setToken(
-        "--fds-semantic-border-action-default",
-        lightColors.solids[0].color
-      );
-      setToken("--fds-semantic-text-action-default", lightColors.text[1].color);
-      setToken(
-        "--fds-semantic-text-action-first-default",
-        lightColors.text[1].color
-      );
-      setToken(
-        "--fds-semantic-border-neutral-default",
-        lightColors.borders[2].color
-      );
-      setToken(
-        "--fds-semantic-border-neutral-subtle",
-        lightColors.borders[0].color
-      );
-      setToken("--fds-radio-border-color", lightColors.solids[0].color);
-      setToken(
-        "--fds-semantic-surface-action-first-no_fill",
-        lightColors.components[0].color
-      );
-      setToken(
-        "--fds-semantic-surface-action-first-no_fill-hover",
-        lightColors.components[1].color
-      );
+      // Solid normal
+      setTokens(tokens.solids.normal, lightColors.solids[0].color);
+
+      // Solid hover
+      setTokens(tokens.solids.hover, lightColors.solids[1].color);
+
+      // Solid active
+      setTokens(tokens.solids.active, lightColors.solids[2].color);
+
+      // Text subtle
+      setTokens(tokens.text.subtle, lightColors.text[0].color);
+
+      // Text default
+      setTokens(tokens.text.default, lightColors.text[1].color);
     }
   }, [color, themeMode]);
   return (

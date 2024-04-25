@@ -109,3 +109,26 @@
 .toggle img {
   height: 16px;
 }
+
+.tokens {
+  margin-top: 40px;
+}
+
+.tokens h3 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.tokens h2 {
+  font-size: 22px;
+  margin-bottom: 0;
+}
+
+.token {
+  font-size: 16px;
+}
+
+.token div {
+  margin-bottom: 6px;
+}
