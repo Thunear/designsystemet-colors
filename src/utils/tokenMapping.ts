@@ -42,7 +42,11 @@ export const tokenMapping = {
     active: ["--fds-semantic-surface-action-first-active"],
   },
   text: {
-    subtle: ["--fds-semantic-text-neutral-subtle"],
+    subtle: [
+      "--fds-semantic-text-neutral-subtle",
+      "--fds-semantic-text-action-hover",
+      "--fds-semantic-text-action-first-hover",
+    ],
     default: [
       "--fds-semantic-text-action-default",
       "--fds-semantic-text-neutral-default",
