@@ -13,7 +13,7 @@
   display: block;
   margin-left: 32px;
   border-bottom: 3px solid transparent;
-  padding-bottom: 7px;
+  padding-bottom: 10px;
   font-size: 18px;
 }
 
@@ -22,27 +22,27 @@
 }
 
 .container {
-  height: 96px;
+  height: 90px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .active {
-  border-color: grey !important;
+  border-color: rgb(163, 163, 163) !important;
   font-weight: 500;
 }
 
 .logoContainer {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
 }
 
 .tag {
-  background-color: rgb(243, 222, 255);
+  background-color: #ffe3f9;
   border-radius: 4px;
-  padding: 8px 12px;
-  font-size: 16px;
+  padding: 7px 9px;
+  font-size: 18px;
   font-weight: 500;
 }

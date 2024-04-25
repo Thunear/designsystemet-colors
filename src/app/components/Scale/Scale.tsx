@@ -8,8 +8,6 @@ import {
   CssColor,
 } from "@adobe/leonardo-contrast-colors";
 import {
-  hexToRgb,
-  luminanceFromRgb,
   getLightnessFromHex,
   getContrastFromLightness,
   luminanceFromHex,
@@ -20,6 +18,7 @@ type ScaleProps = {
   color: CssColor;
   showHeader?: boolean;
   showColorMeta?: boolean;
+  themeMode: modeType;
 };
 
 type ColorType = {
@@ -36,6 +35,8 @@ type ColorsType = {
   text: ColorType[];
   solids: ColorType[];
 };
+
+type modeType = "light" | "dark" | "contrast";
 
 const addColorsToTempArray = (themeValues: any, tempArray: ColorsType) => {
   for (let i = 0; i < themeValues.length; i++) {
@@ -69,7 +70,134 @@ const addColorsToTempArray = (themeValues: any, tempArray: ColorsType) => {
   }
 };
 
-export const Scale = ({ color, showHeader, showColorMeta }: ScaleProps) => {
+const setToken = (token: string, color: string) => {
+  const previewElement = document.getElementById("preview");
+  if (previewElement) {
+    previewElement.style.setProperty(token, color);
+  }
+};
+
+const buildColorScale = (color: CssColor, mode: modeType) => {
+  let leoBackgroundColor = new BackgroundColor({
+    name: "gray",
+    colorKeys: ["#ffffff"],
+    ratios: [1],
+  });
+
+  let colorLightness = getLightnessFromHex(color);
+  let multiplier = colorLightness <= 30 ? -9 : 9;
+  let solidContrast = getContrastFromLightness(
+    colorLightness,
+    color,
+    leoBackgroundColor.colorKeys[0]
+  );
+  let solidHoverContrast = getContrastFromLightness(
+    colorLightness - multiplier,
+    color,
+    leoBackgroundColor.colorKeys[0]
+  );
+  let solidActiveContrast = getContrastFromLightness(
+    colorLightness - multiplier * 2,
+    color,
+    leoBackgroundColor.colorKeys[0]
+  );
+
+  let lightnessScale: number[] = [];
+
+  if (mode === "light") {
+    lightnessScale = [98, 95, 90, 85, 80, 70, 60, 50, 40, 20];
+  } else if (mode === "dark") {
+    lightnessScale = [20, 35, 50, 60, 70, 80, 85, 90, 95, 98];
+  } else {
+    lightnessScale = [20, 35, 50, 60, 70, 80, 85, 90, 95, 98];
+  }
+
+  let leoColors = new Color({
+    name: "leoMainColor",
+    colorKeys: [color],
+    ratios: [
+      getContrastFromLightness(
+        lightnessScale[0],
+        color,
+        leoBackgroundColor.colorKeys[0]
+      ),
+      getContrastFromLightness(
+        lightnessScale[1],
+        color,
+        leoBackgroundColor.colorKeys[0]
+      ),
+      getContrastFromLightness(
+        lightnessScale[2],
+        color,
+        leoBackgroundColor.colorKeys[0]
+      ),
+      getContrastFromLightness(
+        lightnessScale[3],
+        color,
+        leoBackgroundColor.colorKeys[0]
+      ),
+      getContrastFromLightness(
+        lightnessScale[4],
+        color,
+        leoBackgroundColor.colorKeys[0]
+      ),
+      getContrastFromLightness(
+        lightnessScale[5],
+        color,
+        leoBackgroundColor.colorKeys[0]
+      ),
+      getContrastFromLightness(
+        lightnessScale[6],
+        color,
+        leoBackgroundColor.colorKeys[0]
+      ),
+      getContrastFromLightness(
+        lightnessScale[7],
+        color,
+        leoBackgroundColor.colorKeys[0]
+      ),
+      solidContrast,
+      solidHoverContrast,
+      solidActiveContrast,
+      getContrastFromLightness(
+        lightnessScale[8],
+        color,
+        leoBackgroundColor.colorKeys[0]
+      ),
+      getContrastFromLightness(
+        lightnessScale[9],
+        color,
+        leoBackgroundColor.colorKeys[0]
+      ),
+    ],
+  });
+
+  let theme = new Theme({
+    colors: [leoColors],
+    backgroundColor: leoBackgroundColor,
+    lightness: 100,
+  });
+
+  let themeValues = theme.contrastColors[1].values;
+
+  let tempColors: ColorsType = {
+    backgrounds: [],
+    components: [],
+    borders: [],
+    text: [],
+    solids: [],
+  };
+
+  addColorsToTempArray(themeValues, tempColors);
+  return tempColors;
+};
+
+export const Scale = ({
+  color,
+  showHeader,
+  showColorMeta,
+  themeMode,
+}: ScaleProps) => {
   const [colors, setColors] = useState<ColorsType>({
     backgrounds: [],
     components: [],
@@ -78,7 +206,7 @@ export const Scale = ({ color, showHeader, showColorMeta }: ScaleProps) => {
     solids: [],
   });
 
-  const [darkColors, setDarkColors] = useState<ColorsType>({
+  const [greyColors, setDarkColors] = useState<ColorsType>({
     backgrounds: [],
     components: [],
     borders: [],
@@ -87,139 +215,40 @@ export const Scale = ({ color, showHeader, showColorMeta }: ScaleProps) => {
   });
 
   useEffect(() => {
-    let leoBackgroundColor = new BackgroundColor({
-      name: "gray",
-      colorKeys: ["#ffffff"],
-      ratios: [1],
-    });
+    const lightColors = buildColorScale(color, themeMode);
+    setColors(lightColors);
 
-    let colorLightness = getLightnessFromHex(color);
-    let multiplier = colorLightness <= 30 ? -9 : 9;
-    let solidContrast = getContrastFromLightness(
-      colorLightness,
-      color,
-      leoBackgroundColor.colorKeys[0]
+    const darkColors = buildColorScale("#1E2B3C", themeMode);
+    setDarkColors(darkColors);
+
+    const previewElement = document.getElementById("preview");
+    if (previewElement) {
+      previewElement.style.setProperty(
+        "--fds-semantic-surface-action-first-default",
+        color
+      );
+    }
+
+    setToken(
+      "--fds-semantic-background-default",
+      lightColors.backgrounds[0].color
     );
-    let solidHoverContrast = getContrastFromLightness(
-      colorLightness - multiplier,
-      color,
-      leoBackgroundColor.colorKeys[0]
-    );
-    let solidActiveContrast = getContrastFromLightness(
-      colorLightness - multiplier * 2,
-      color,
-      leoBackgroundColor.colorKeys[0]
-    );
-
-    let leoColors = new Color({
-      name: "leoMainColor",
-      colorKeys: [color],
-      ratios: [
-        getContrastFromLightness(98, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(95, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(90, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(85, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(80, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(70, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(60, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(50, color, leoBackgroundColor.colorKeys[0]),
-        solidContrast,
-        solidHoverContrast,
-        solidActiveContrast,
-        getContrastFromLightness(40, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(20, color, leoBackgroundColor.colorKeys[0]),
-      ],
-    });
-
-    let theme = new Theme({
-      colors: [leoColors],
-      backgroundColor: leoBackgroundColor,
-      lightness: 100,
-    });
-
-    let themeValues = theme.contrastColors[1].values;
-
-    let tempColors: ColorsType = {
-      backgrounds: [],
-      components: [],
-      borders: [],
-      text: [],
-      solids: [],
-    };
-
-    addColorsToTempArray(themeValues, tempColors);
-
-    // Dark theme
-    let darkMainColor = lightenDarkThemeColor(color);
-    let darkColorLightness = getLightnessFromHex(darkMainColor);
-    let darkMultiplier = darkColorLightness <= 30 ? -9 : 9;
-    let darkSolidContrast = getContrastFromLightness(
-      darkColorLightness,
-      darkMainColor,
-      leoBackgroundColor.colorKeys[0]
-    );
-    let darkSolidHoverContrast = getContrastFromLightness(
-      darkColorLightness - darkMultiplier,
-      darkMainColor,
-      leoBackgroundColor.colorKeys[0]
-    );
-    let darkSolidActiveContrast = getContrastFromLightness(
-      darkColorLightness - darkMultiplier * 2,
-      darkMainColor,
-      leoBackgroundColor.colorKeys[0]
+    setToken(
+      "--fds-semantic-background-subtle",
+      lightColors.backgrounds[1].color
     );
 
-    let leoDarkColors = new Color({
-      name: "leoMainColor",
-      colorKeys: [color],
-      ratios: [
-        getContrastFromLightness(2, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(5, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(10, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(15, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(20, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(30, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(40, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(50, color, leoBackgroundColor.colorKeys[0]),
-        darkSolidContrast,
-        darkSolidHoverContrast,
-        darkSolidActiveContrast,
-        getContrastFromLightness(60, color, leoBackgroundColor.colorKeys[0]),
-        getContrastFromLightness(80, color, leoBackgroundColor.colorKeys[0]),
-      ],
-    });
-
-    let darkTheme = new Theme({
-      colors: [leoDarkColors],
-      backgroundColor: leoBackgroundColor,
-      lightness: 100,
-    });
-
-    let darkThemeValues = darkTheme.contrastColors[1].values;
-
-    let darkTempColors: ColorsType = {
-      backgrounds: [],
-      components: [],
-      borders: [],
-      text: [],
-      solids: [],
-    };
-
-    addColorsToTempArray(darkThemeValues, darkTempColors);
-    setColors(tempColors);
-    setDarkColors(darkTempColors);
-
-    document.documentElement.style.setProperty(
-      "--fds-semantic-surface-action-first-default",
-      color
+    setToken(
+      "--fds-semantic-surface-action-first-hover",
+      lightColors.solids[1].color
     );
     document.documentElement.style.setProperty(
       "--fds-semantic-surface-action-first-hover",
-      tempColors.solids[1].color
+      lightColors.solids[1].color
     );
     document.documentElement.style.setProperty(
       "--fds-semantic-surface-action-first-active",
-      tempColors.solids[2].color
+      lightColors.solids[2].color
     );
 
     document.documentElement.style.setProperty(
@@ -228,28 +257,28 @@ export const Scale = ({ color, showHeader, showColorMeta }: ScaleProps) => {
     );
     document.documentElement.style.setProperty(
       "--fds-semantic-surface-success-hover",
-      tempColors.solids[1].color
+      lightColors.solids[1].color
     );
 
     document.documentElement.style.setProperty(
       "--fds-semantic-surface-action-first-subtle",
-      tempColors.components[0].color
+      lightColors.components[0].color
     );
     document.documentElement.style.setProperty(
       "--fds-semantic-surface-action-first-subtle-hover",
-      tempColors.components[1].color
+      lightColors.components[1].color
     );
     document.documentElement.style.setProperty(
       "--fds-semantic-surface-action-first-subtle-active",
-      tempColors.components[2].color
+      lightColors.components[2].color
     );
     document.documentElement.style.setProperty(
       "--fds-semantic-border-action-first-subtle",
-      tempColors.borders[0].color
+      lightColors.borders[0].color
     );
     document.documentElement.style.setProperty(
       "--fds-semantic-border-action-first-subtle-hover",
-      tempColors.borders[1].color
+      lightColors.borders[1].color
     );
 
     document.documentElement.style.setProperty(
@@ -258,23 +287,38 @@ export const Scale = ({ color, showHeader, showColorMeta }: ScaleProps) => {
     );
     document.documentElement.style.setProperty(
       "--fds-semantic-border-input-hover",
-      tempColors.solids[0].color
+      lightColors.solids[0].color
     );
     document.documentElement.style.setProperty(
       "--fds-checkbox-border-color",
-      tempColors.solids[0].color
+      lightColors.solids[0].color
     );
 
     document.documentElement.style.setProperty(
       "--fds-semantic-surface-info-subtle-hover",
-      tempColors.components[1].color
+      lightColors.components[1].color
     );
 
     document.documentElement.style.setProperty(
       "--fds-semantic-border-action-first-default",
-      tempColors.borders[1].color
+      lightColors.solids[1].color
     );
-  }, [color]);
+
+    setToken(
+      "--fds-semantic-border-action-default",
+      lightColors.solids[0].color
+    );
+    setToken("--fds-semantic-text-action-default", lightColors.solids[0].color);
+    setToken(
+      "--fds-semantic-text-action-first-default",
+      lightColors.solids[0].color
+    );
+    setToken(
+      "--fds-semantic-border-neutral-default",
+      lightColors.solids[1].color
+    );
+    setToken("--fds-radio-border-color", lightColors.solids[0].color);
+  }, [color, themeMode]);
   return (
     <div className={classes.themes}>
       <div className={classes.test}>
@@ -310,11 +354,11 @@ export const Scale = ({ color, showHeader, showColorMeta }: ScaleProps) => {
         />
       </div>
       <div className={classes.test}>
-        <Group showColorMeta={showColorMeta} colors={darkColors.backgrounds} />
-        <Group showColorMeta={showColorMeta} colors={darkColors.components} />
-        <Group showColorMeta={showColorMeta} colors={darkColors.borders} />
-        <Group showColorMeta={showColorMeta} colors={darkColors.solids} />
-        <Group showColorMeta={showColorMeta} colors={darkColors.text} />
+        <Group showColorMeta={showColorMeta} colors={greyColors.backgrounds} />
+        <Group showColorMeta={showColorMeta} colors={greyColors.components} />
+        <Group showColorMeta={showColorMeta} colors={greyColors.borders} />
+        <Group showColorMeta={showColorMeta} colors={greyColors.solids} />
+        <Group showColorMeta={showColorMeta} colors={greyColors.text} />
       </div>
     </div>
   );
