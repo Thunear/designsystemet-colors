@@ -286,7 +286,7 @@ export const Scale = ({
 
     document.documentElement.style.setProperty(
       "--fds-semantic-border-input-default",
-      "#808489"
+      darkColors.borders[2].color
     );
     document.documentElement.style.setProperty(
       "--fds-semantic-border-input-hover",
