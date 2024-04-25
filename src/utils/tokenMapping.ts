@@ -1,7 +1,7 @@
 export const tokenMapping = {
   background: {
-    subtle: ["--fds-semantic-background-default"],
-    default: ["--fds-semantic-background-subtle"],
+    subtle: ["--fds-semantic-background-subtle"],
+    default: ["--fds-semantic-background-default"],
   },
   component: {
     normal: [
