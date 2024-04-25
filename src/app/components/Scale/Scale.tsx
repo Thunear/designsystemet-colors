@@ -91,7 +91,7 @@ export const Scale = ({
       setTokens(tokens.component.normal, lightColors.components[0].color);
 
       // Component hover
-      setTokens(tokens.component.normal, lightColors.components[1].color);
+      setTokens(tokens.component.hover, lightColors.components[1].color);
 
       // Component active
       setTokens(tokens.component.active, lightColors.components[2].color);
