@@ -12,13 +12,14 @@ import {
   Pagination,
   Radio,
   ToggleGroup,
+  Heading,
 } from "@digdir/designsystemet-react";
 
 export const PreviewBox = () => {
   return (
     <div className={classes.box} id="preview">
       <div className={classes.login}>
-        <h2 className={classes.title}>Logg inn</h2>
+        <Heading className={classes.title}>Logg inn</Heading>
         <Textfield
           label="Brukernavn"
           className={classes.input}

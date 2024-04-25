@@ -107,9 +107,9 @@ const buildColorScale = (color: CssColor, mode: modeType) => {
   if (mode === "light") {
     lightnessScale = [98, 95, 90, 85, 80, 70, 60, 50, 35, 20];
   } else if (mode === "dark") {
-    lightnessScale = [11, 14, 10, 15, 20, 30, 40, 40, 65, 80];
+    lightnessScale = [15, 10, 10, 15, 20, 30, 40, 40, 65, 80];
   } else {
-    lightnessScale = [2, 5, 10, 15, 20, 30, 40, 40, 65, 80];
+    lightnessScale = [7, 1, 10, 15, 20, 30, 40, 40, 70, 90];
   }
 
   let leoColors = new Color({
@@ -229,6 +229,9 @@ export const Scale = ({
       );
     }
 
+    setToken("--fds-semantic-text-neutral-default", lightColors.text[1].color);
+    setToken("--fds-semantic-text-neutral-subtle", lightColors.text[0].color);
+
     setToken(
       "--fds-semantic-background-default",
       lightColors.backgrounds[0].color
@@ -311,7 +314,7 @@ export const Scale = ({
     setToken("--fds-semantic-text-action-default", lightColors.solids[0].color);
     setToken(
       "--fds-semantic-text-action-first-default",
-      lightColors.solids[0].color
+      lightColors.text[0].color
     );
     setToken(
       "--fds-semantic-border-neutral-default",
