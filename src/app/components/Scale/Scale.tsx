@@ -308,7 +308,7 @@ export const Scale = ({
 
       document.documentElement.style.setProperty(
         "--fds-semantic-border-action-first-default",
-        lightColors.solids[1].color
+        lightColors.borders[2].color
       );
 
       setToken(
@@ -322,11 +322,11 @@ export const Scale = ({
       );
       setToken(
         "--fds-semantic-border-neutral-default",
-        lightColors.solids[1].color
+        lightColors.borders[2].color
       );
       setToken(
         "--fds-semantic-border-neutral-subtle",
-        lightColors.solids[0].color
+        lightColors.borders[0].color
       );
       setToken("--fds-radio-border-color", lightColors.solids[0].color);
       setToken(
