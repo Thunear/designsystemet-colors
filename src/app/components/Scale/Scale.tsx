@@ -105,11 +105,11 @@ const buildColorScale = (color: CssColor, mode: modeType) => {
   let lightnessScale: number[] = [];
 
   if (mode === "light") {
-    lightnessScale = [98, 95, 90, 85, 80, 70, 60, 50, 40, 20];
+    lightnessScale = [98, 95, 90, 85, 80, 70, 60, 50, 35, 20];
   } else if (mode === "dark") {
-    lightnessScale = [20, 35, 50, 60, 70, 80, 85, 90, 95, 98];
+    lightnessScale = [11, 14, 10, 15, 20, 30, 40, 40, 65, 80];
   } else {
-    lightnessScale = [20, 35, 50, 60, 70, 80, 85, 90, 95, 98];
+    lightnessScale = [2, 5, 10, 15, 20, 30, 40, 40, 65, 80];
   }
 
   let leoColors = new Color({
