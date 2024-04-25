@@ -36,6 +36,9 @@ const Color = ({
           onMouseLeave={() => {
             setTooltipText("Kopier hexverdi");
           }}
+          onMouseEnter={() => {
+            setTooltipText("Kopier hexverdi");
+          }}
           style={{ backgroundColor: color }}
           className={cn(
             classes.box,
