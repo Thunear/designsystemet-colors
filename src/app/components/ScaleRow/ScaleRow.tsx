@@ -6,10 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import { getRatioFromLum, luminanceFromHex } from "@/utils/ColorUtils";
 import { CheckmarkIcon, XMarkIcon } from "@navikt/aksel-icons";
 import { ChromePicker } from "react-color";
-
+import { modeType } from "@/types";
 import { useClickOutside } from "@react-awesome/use-click-outside";
-
-type modeType = "light" | "dark" | "contrast";
 
 type ScaleRowProps = {
   color: CssColor;

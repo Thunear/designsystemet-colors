@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { CssColor } from "@adobe/leonardo-contrast-colors";
 import { tokenMapping as tokens } from "@/utils/tokenMapping";
 import { buildColorScale } from "@/utils/themeUtils";
+import { modeType } from "@/types";
 
 type ScaleProps = {
   color: CssColor;
@@ -26,8 +27,6 @@ type ColorsType = {
   text: ColorType[];
   solids: ColorType[];
 };
-
-type modeType = "light" | "dark" | "contrast";
 
 const setToken = (token: string, color: string) => {
   const previewElement = document.getElementById("preview");
