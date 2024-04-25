@@ -28,8 +28,6 @@ export const tokenMapping = {
   },
   solids: {
     normal: [
-      "--fds-radio-border-color",
-      "--fds-checkbox-border-color",
       "--fds-semantic-border-input-hover",
       "--fds-semantic-border-action-default",
       "--fds-semantic-surface-success-default",
