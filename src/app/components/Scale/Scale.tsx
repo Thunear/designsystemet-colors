@@ -311,16 +311,24 @@ export const Scale = ({
       "--fds-semantic-border-action-default",
       lightColors.solids[0].color
     );
-    setToken("--fds-semantic-text-action-default", lightColors.solids[0].color);
+    setToken("--fds-semantic-text-action-default", lightColors.text[1].color);
     setToken(
       "--fds-semantic-text-action-first-default",
-      lightColors.text[0].color
+      lightColors.text[1].color
     );
     setToken(
       "--fds-semantic-border-neutral-default",
       lightColors.solids[1].color
     );
     setToken("--fds-radio-border-color", lightColors.solids[0].color);
+    setToken(
+      "--fds-semantic-surface-action-first-no_fill",
+      lightColors.components[0].color
+    );
+    setToken(
+      "--fds-semantic-surface-action-first-no_fill-hover",
+      lightColors.components[1].color
+    );
   }, [color, themeMode]);
   return (
     <div className={classes.themes}>

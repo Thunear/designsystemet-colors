@@ -1,4 +1,3 @@
-import { features } from "process";
 import classes from "./Color.module.css";
 import cn from "classnames";
 import { SunIcon } from "@navikt/aksel-icons";
