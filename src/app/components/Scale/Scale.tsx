@@ -56,31 +56,14 @@ export const Scale = ({
     solids: [],
   });
 
-  const [greyColors, setDarkColors] = useState<ColorsType>({
-    backgrounds: [],
-    components: [],
-    borders: [],
-    text: [],
-    solids: [],
-  });
-
   useEffect(() => {
     const lightColors = buildColorScale(color, themeMode);
     setColors(lightColors);
 
-    const darkColors = buildColorScale("#1E2B3C", themeMode);
-    setDarkColors(darkColors);
+    const greyColors = buildColorScale("#1E2B3C", themeMode);
 
     // This check is a hack to make the preview work
     if (color !== "#1E2B3C") {
-      const previewElement = document.getElementById("preview");
-      if (previewElement) {
-        previewElement.style.setProperty(
-          "--fds-semantic-surface-action-first-default",
-          color
-        );
-      }
-
       // Background subtle
       setTokens(tokens.background.subtle, lightColors.backgrounds[0].color);
 
