@@ -221,114 +221,119 @@ export const Scale = ({
     const darkColors = buildColorScale("#1E2B3C", themeMode);
     setDarkColors(darkColors);
 
-    const previewElement = document.getElementById("preview");
-    if (previewElement) {
-      previewElement.style.setProperty(
+    if (color !== "#1E2B3C") {
+      const previewElement = document.getElementById("preview");
+      if (previewElement) {
+        previewElement.style.setProperty(
+          "--fds-semantic-surface-action-first-default",
+          color
+        );
+      }
+
+      setToken(
+        "--fds-semantic-text-neutral-default",
+        lightColors.text[1].color
+      );
+      setToken("--fds-semantic-text-neutral-subtle", lightColors.text[0].color);
+
+      setToken(
+        "--fds-semantic-background-default",
+        lightColors.backgrounds[0].color
+      );
+      setToken(
+        "--fds-semantic-background-subtle",
+        lightColors.backgrounds[1].color
+      );
+
+      document.documentElement.style.setProperty(
         "--fds-semantic-surface-action-first-default",
         color
       );
+      document.documentElement.style.setProperty(
+        "--fds-semantic-surface-action-first-hover",
+        lightColors.solids[1].color
+      );
+      document.documentElement.style.setProperty(
+        "--fds-semantic-surface-action-first-active",
+        lightColors.solids[2].color
+      );
+
+      document.documentElement.style.setProperty(
+        "--fds-semantic-surface-success-default",
+        color
+      );
+      document.documentElement.style.setProperty(
+        "--fds-semantic-surface-success-hover",
+        lightColors.solids[1].color
+      );
+
+      document.documentElement.style.setProperty(
+        "--fds-semantic-surface-action-first-subtle",
+        lightColors.components[0].color
+      );
+      document.documentElement.style.setProperty(
+        "--fds-semantic-surface-action-first-subtle-hover",
+        lightColors.components[1].color
+      );
+      document.documentElement.style.setProperty(
+        "--fds-semantic-surface-action-first-subtle-active",
+        lightColors.components[2].color
+      );
+      document.documentElement.style.setProperty(
+        "--fds-semantic-border-action-first-subtle",
+        lightColors.borders[0].color
+      );
+      document.documentElement.style.setProperty(
+        "--fds-semantic-border-action-first-subtle-hover",
+        lightColors.borders[1].color
+      );
+
+      document.documentElement.style.setProperty(
+        "--fds-semantic-border-input-default",
+        darkColors.borders[2].color
+      );
+      document.documentElement.style.setProperty(
+        "--fds-semantic-border-input-hover",
+        lightColors.solids[0].color
+      );
+      document.documentElement.style.setProperty(
+        "--fds-checkbox-border-color",
+        lightColors.solids[0].color
+      );
+
+      document.documentElement.style.setProperty(
+        "--fds-semantic-surface-info-subtle-hover",
+        lightColors.components[1].color
+      );
+
+      document.documentElement.style.setProperty(
+        "--fds-semantic-border-action-first-default",
+        lightColors.solids[1].color
+      );
+
+      setToken(
+        "--fds-semantic-border-action-default",
+        lightColors.solids[0].color
+      );
+      setToken("--fds-semantic-text-action-default", lightColors.text[1].color);
+      setToken(
+        "--fds-semantic-text-action-first-default",
+        lightColors.text[1].color
+      );
+      setToken(
+        "--fds-semantic-border-neutral-default",
+        lightColors.solids[1].color
+      );
+      setToken("--fds-radio-border-color", lightColors.solids[0].color);
+      setToken(
+        "--fds-semantic-surface-action-first-no_fill",
+        lightColors.components[0].color
+      );
+      setToken(
+        "--fds-semantic-surface-action-first-no_fill-hover",
+        lightColors.components[1].color
+      );
     }
-
-    setToken("--fds-semantic-text-neutral-default", lightColors.text[1].color);
-    setToken("--fds-semantic-text-neutral-subtle", lightColors.text[0].color);
-
-    setToken(
-      "--fds-semantic-background-default",
-      lightColors.backgrounds[0].color
-    );
-    setToken(
-      "--fds-semantic-background-subtle",
-      lightColors.backgrounds[1].color
-    );
-
-    document.documentElement.style.setProperty(
-      "--fds-semantic-surface-action-first-default",
-      color
-    );
-    document.documentElement.style.setProperty(
-      "--fds-semantic-surface-action-first-hover",
-      lightColors.solids[1].color
-    );
-    document.documentElement.style.setProperty(
-      "--fds-semantic-surface-action-first-active",
-      lightColors.solids[2].color
-    );
-
-    document.documentElement.style.setProperty(
-      "--fds-semantic-surface-success-default",
-      color
-    );
-    document.documentElement.style.setProperty(
-      "--fds-semantic-surface-success-hover",
-      lightColors.solids[1].color
-    );
-
-    document.documentElement.style.setProperty(
-      "--fds-semantic-surface-action-first-subtle",
-      lightColors.components[0].color
-    );
-    document.documentElement.style.setProperty(
-      "--fds-semantic-surface-action-first-subtle-hover",
-      lightColors.components[1].color
-    );
-    document.documentElement.style.setProperty(
-      "--fds-semantic-surface-action-first-subtle-active",
-      lightColors.components[2].color
-    );
-    document.documentElement.style.setProperty(
-      "--fds-semantic-border-action-first-subtle",
-      lightColors.borders[0].color
-    );
-    document.documentElement.style.setProperty(
-      "--fds-semantic-border-action-first-subtle-hover",
-      lightColors.borders[1].color
-    );
-
-    document.documentElement.style.setProperty(
-      "--fds-semantic-border-input-default",
-      darkColors.borders[2].color
-    );
-    document.documentElement.style.setProperty(
-      "--fds-semantic-border-input-hover",
-      lightColors.solids[0].color
-    );
-    document.documentElement.style.setProperty(
-      "--fds-checkbox-border-color",
-      lightColors.solids[0].color
-    );
-
-    document.documentElement.style.setProperty(
-      "--fds-semantic-surface-info-subtle-hover",
-      lightColors.components[1].color
-    );
-
-    document.documentElement.style.setProperty(
-      "--fds-semantic-border-action-first-default",
-      lightColors.solids[1].color
-    );
-
-    setToken(
-      "--fds-semantic-border-action-default",
-      lightColors.solids[0].color
-    );
-    setToken("--fds-semantic-text-action-default", lightColors.text[1].color);
-    setToken(
-      "--fds-semantic-text-action-first-default",
-      lightColors.text[1].color
-    );
-    setToken(
-      "--fds-semantic-border-neutral-default",
-      lightColors.solids[1].color
-    );
-    setToken("--fds-radio-border-color", lightColors.solids[0].color);
-    setToken(
-      "--fds-semantic-surface-action-first-no_fill",
-      lightColors.components[0].color
-    );
-    setToken(
-      "--fds-semantic-surface-action-first-no_fill-hover",
-      lightColors.components[1].color
-    );
   }, [color, themeMode]);
   return (
     <div className={classes.themes}>
@@ -364,13 +369,13 @@ export const Scale = ({
           names={["Subtle", "Default"]}
         />
       </div>
-      <div className={classes.test}>
+      {/* <div className={classes.test}>
         <Group showColorMeta={showColorMeta} colors={greyColors.backgrounds} />
         <Group showColorMeta={showColorMeta} colors={greyColors.components} />
         <Group showColorMeta={showColorMeta} colors={greyColors.borders} />
         <Group showColorMeta={showColorMeta} colors={greyColors.solids} />
         <Group showColorMeta={showColorMeta} colors={greyColors.text} />
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -9,13 +9,21 @@ import { ChromePicker } from "react-color";
 
 import { useClickOutside } from "@react-awesome/use-click-outside";
 
+type modeType = "light" | "dark" | "contrast";
+
 type ScaleRowProps = {
   color: CssColor;
   showHeader?: boolean;
   name: string;
+  themeMode: modeType;
 };
 
-export const ScaleRow = ({ color, showHeader, name }: ScaleRowProps) => {
+export const ScaleRow = ({
+  color,
+  showHeader,
+  name,
+  themeMode,
+}: ScaleRowProps) => {
   const [contrast, setContrast] = useState<number>(0);
   const [activeColor, setActiveColor] = useState<CssColor>("#000000");
   const [showPicker, setShowPicker] = useState(false);
@@ -86,7 +94,11 @@ export const ScaleRow = ({ color, showHeader, name }: ScaleRowProps) => {
           </div>
         </div>
       </div>
-      <Scale color={activeColor} showHeader={showHeader} />
+      <Scale
+        color={activeColor}
+        showHeader={showHeader}
+        themeMode={themeMode}
+      />
       <div></div>
     </div>
   );

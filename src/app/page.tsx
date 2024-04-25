@@ -74,6 +74,7 @@ export default function Home() {
             showColorMeta={false}
             themeMode={themeMode}
           />
+          <Scale color="#1E2B3C" showColorMeta={false} themeMode={themeMode} />
           <PreviewBox />
         </Container>
       </main>
