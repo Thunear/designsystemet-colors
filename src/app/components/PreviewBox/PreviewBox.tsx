@@ -45,7 +45,7 @@ export const PreviewBox = () => {
             <Tabs.Tab value="value1">Tab 1</Tabs.Tab>
             <Tabs.Tab value="value2">Tab 2</Tabs.Tab>
             <Tabs.Tab value="value3">Tab 3</Tabs.Tab>
-            <Tabs.Tab value="value3">Tab 4</Tabs.Tab>
+            <Tabs.Tab value="value4">Tab 4</Tabs.Tab>
           </Tabs.List>
         </Tabs>
         <div className={classes.checkList}>

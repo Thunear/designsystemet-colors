@@ -138,7 +138,7 @@ export const Scale = ({
         />
         <Group
           showColorMeta={showColorMeta}
-          header={showHeader ? "Kanter" : ""}
+          header={showHeader ? "Bordere" : ""}
           colors={colors.borders}
           names={["Subtle", "Default", "Strong"]}
         />
