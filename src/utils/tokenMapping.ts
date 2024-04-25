@@ -22,7 +22,6 @@ export const tokenMapping = {
     ],
     default: ["--fds-semantic-border-action-first-subtle-hover"],
     strong: [
-      "--fds-semantic-border-input-default",
       "--fds-semantic-border-neutral-default",
       "--fds-semantic-border-action-first-default",
     ],

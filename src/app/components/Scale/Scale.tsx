@@ -64,6 +64,12 @@ export const Scale = ({
     // This check is a hack to make the preview work
     if (color !== "#1E2B3C") {
       // Background subtle
+
+      setToken(
+        "--fds-semantic-border-input-default",
+        greyColors.borders[2].color
+      );
+
       setTokens(tokens.background.subtle, lightColors.backgrounds[0].color);
 
       // Background default

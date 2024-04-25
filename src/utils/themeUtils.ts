@@ -62,7 +62,7 @@ export const buildColorScale = (color: CssColor, mode: modeType) => {
   if (mode === "light") {
     lightnessScale = [98, 95, 90, 85, 80, 70, 60, 50, 35, 20];
   } else if (mode === "dark") {
-    lightnessScale = [15, 10, 10, 15, 20, 30, 40, 40, 65, 80];
+    lightnessScale = [14, 10, 10, 15, 20, 30, 40, 40, 65, 80];
   } else {
     lightnessScale = [7, 1, 10, 15, 20, 30, 40, 40, 70, 90];
   }
