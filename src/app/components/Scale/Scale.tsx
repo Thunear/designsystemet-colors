@@ -324,6 +324,10 @@ export const Scale = ({
         "--fds-semantic-border-neutral-default",
         lightColors.solids[1].color
       );
+      setToken(
+        "--fds-semantic-border-neutral-subtle",
+        lightColors.solids[0].color
+      );
       setToken("--fds-radio-border-color", lightColors.solids[0].color);
       setToken(
         "--fds-semantic-surface-action-first-no_fill",
