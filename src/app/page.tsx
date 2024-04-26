@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import classes from "./page.module.css";
@@ -10,12 +11,14 @@ import { CssColor } from "@adobe/leonardo-contrast-colors";
 import { PreviewBox } from "./components/PreviewBox/PreviewBox";
 import { Container, Row, Col } from "react-bootstrap";
 import { tokenMapping } from "@/utils/tokenMapping";
+import { ChevronDownIcon } from "@navikt/aksel-icons";
 
 import cn from "classnames";
+import { Button, DropdownMenu } from "@digdir/designsystemet-react";
 
 type modeType = "light" | "dark" | "contrast";
 
-const Tomato = (arr: []) => {
+const loopTokens = (arr: []) => {
   return (
     <div>
       {arr.map((token, index) => (
@@ -27,6 +30,7 @@ const Tomato = (arr: []) => {
 
 export default function Home() {
   const [accentColor, setAccentColor] = useState<CssColor>("#0062BA");
+  const [greyColor, setGreyColor] = useState<CssColor>("#1E2B3C");
   const [themeMode, setThemeMode] = useState<modeType>("light");
   return (
     <div>
@@ -67,16 +71,38 @@ export default function Home() {
               <ColorPicker
                 label="Accent farge"
                 defaultColor="#0062BA"
-                onColorChanged={(e) => {
+                onColorChanged={(e: any) => {
                   setAccentColor(e);
                 }}
               />
-              <ColorPicker disabled label="Gråfarge" defaultColor="#1E2B3C" />
+              <ColorPicker
+                label="Gråfarge"
+                defaultColor="#1E2B3C"
+                onColorChanged={(e: any) => {
+                  setGreyColor(e);
+                }}
+              />
               <ColorPicker
                 disabled
                 label="Bakgrunnsfarge"
                 defaultColor="#ffffff"
               />
+              <div className={classes.dropdown}>
+                <DropdownMenu placement="bottom-start" size="small">
+                  <DropdownMenu.Trigger asChild>
+                    <Button size="small">
+                      Kopier
+                      <ChevronDownIcon title="a11y-title" fontSize="1.5rem" />
+                    </Button>
+                  </DropdownMenu.Trigger>
+                  <DropdownMenu.Content>
+                    <DropdownMenu.Group>
+                      <DropdownMenu.Item>CSS variabler (WIP)</DropdownMenu.Item>
+                      <DropdownMenu.Item>JSON (WIP)</DropdownMenu.Item>
+                    </DropdownMenu.Group>
+                  </DropdownMenu.Content>
+                </DropdownMenu>
+              </div>
             </div>
           </div>
           <Scale
@@ -84,8 +110,14 @@ export default function Home() {
             showHeader
             showColorMeta={false}
             themeMode={themeMode}
+            type="accent"
           />
-          <Scale color="#1E2B3C" showColorMeta={false} themeMode={themeMode} />
+          <Scale
+            color={greyColor}
+            showColorMeta={false}
+            themeMode={themeMode}
+            type="grey"
+          />
           <PreviewBox />
 
           <Row className={cn("gy-2 gx-2", classes.tokens)}>
@@ -95,79 +127,79 @@ export default function Home() {
             <Col md={4}>
               <h3>Background subtle</h3>
               <div className={classes.token}>
-                {Tomato(tokenMapping.background.subtle)}
+                {loopTokens(tokenMapping.background.subtle)}
               </div>
             </Col>
             <Col md={4}>
               <h3>Background default</h3>
               <div className={classes.token}>
-                {Tomato(tokenMapping.background.default)}
+                {loopTokens(tokenMapping.background.default)}
               </div>
             </Col>
             <Col md={4}>
               <h3>Component normal</h3>
               <div className={classes.token}>
-                {Tomato(tokenMapping.component.normal)}
+                {loopTokens(tokenMapping.component.normal)}
               </div>
             </Col>
             <Col md={4}>
               <h3>Component hover</h3>
               <div className={classes.token}>
-                {Tomato(tokenMapping.solids.hover)}
+                {loopTokens(tokenMapping.solids.hover)}
               </div>
             </Col>
             <Col md={4}>
               <h3>Component active</h3>
               <div className={classes.token}>
-                {Tomato(tokenMapping.solids.active)}
+                {loopTokens(tokenMapping.solids.active)}
               </div>
             </Col>
             <Col md={4}>
               <h3>Border subtle</h3>
               <div className={classes.token}>
-                {Tomato(tokenMapping.border.subtle)}
+                {loopTokens(tokenMapping.border.subtle)}
               </div>
             </Col>
             <Col md={4}>
               <h3>Border default</h3>
               <div className={classes.token}>
-                {Tomato(tokenMapping.border.default)}
+                {loopTokens(tokenMapping.border.default)}
               </div>
             </Col>
             <Col md={4}>
               <h3>Border strong</h3>
               <div className={classes.token}>
-                {Tomato(tokenMapping.border.strong)}
+                {loopTokens(tokenMapping.border.strong)}
               </div>
             </Col>
             <Col md={4}>
               <h3>Solid normal</h3>
               <div className={classes.token}>
-                {Tomato(tokenMapping.solids.normal)}
+                {loopTokens(tokenMapping.solids.normal)}
               </div>
             </Col>
             <Col md={4}>
               <h3>Solid hover</h3>
               <div className={classes.token}>
-                {Tomato(tokenMapping.solids.hover)}
+                {loopTokens(tokenMapping.solids.hover)}
               </div>
             </Col>
             <Col md={4}>
               <h3>Solid active</h3>
               <div className={classes.token}>
-                {Tomato(tokenMapping.solids.active)}
+                {loopTokens(tokenMapping.solids.active)}
               </div>
             </Col>
             <Col md={4}>
               <h3>Text subtle</h3>
               <div className={classes.token}>
-                {Tomato(tokenMapping.text.subtle)}
+                {loopTokens(tokenMapping.text.subtle)}
               </div>
             </Col>
             <Col md={4}>
               <h3>Text default</h3>
               <div className={classes.token}>
-                {Tomato(tokenMapping.text.default)}
+                {loopTokens(tokenMapping.text.default)}
               </div>
             </Col>
           </Row>

@@ -11,6 +11,7 @@ type ScaleProps = {
   showHeader?: boolean;
   showColorMeta?: boolean;
   themeMode: modeType;
+  type: "accent" | "grey";
 };
 
 type ColorType = {
@@ -46,6 +47,7 @@ export const Scale = ({
   showHeader,
   showColorMeta,
   themeMode,
+  type,
 }: ScaleProps) => {
   const [colors, setColors] = useState<ColorsType>({
     backgrounds: [],
@@ -59,17 +61,7 @@ export const Scale = ({
     const lightColors = buildColorScale(color, themeMode);
     setColors(lightColors);
 
-    const greyColors = buildColorScale("#1E2B3C", themeMode);
-
-    // This check is a hack to make the preview work
-    if (color !== "#1E2B3C") {
-      // Background subtle
-
-      setToken(
-        "--fds-semantic-border-input-default",
-        greyColors.borders[2].color
-      );
-
+    if (type === "accent") {
       setTokens(tokens.background.subtle, lightColors.backgrounds[0].color);
 
       // Background default
@@ -107,8 +99,19 @@ export const Scale = ({
 
       // Text default
       setTokens(tokens.text.default, lightColors.text[1].color);
+    } else {
+      setToken(
+        "--fds-semantic-border-input-default",
+        lightColors.borders[2].color
+      );
+
+      setToken("--input-placeholder", lightColors.borders[2].color);
+      setToken(
+        "--fds-semantic-surface-neutral-dark",
+        lightColors.borders[2].color
+      );
     }
-  }, [color, themeMode]);
+  }, [color, themeMode, type]);
   return (
     <div className={classes.themes}>
       <div className={classes.test}>

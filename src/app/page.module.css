@@ -51,7 +51,7 @@
 
 .box {
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: center;
   gap: 32px;
   padding: 12px 80px 40px 80px;
@@ -63,7 +63,7 @@
 
 .title {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 30px;
   font-size: 32px;
   font-weight: 500;
   margin-top: 0;
@@ -82,7 +82,7 @@
   margin-right: -1px;
 }
 
-.toggles .toggle:last-child {
+.toggles .toggle:nth-child(3) {
   border-radius: 0 4px 4px 0;
   margin-left: -1px;
 }
@@ -100,10 +100,11 @@
 
 .toggle:hover {
   cursor: pointer;
+  background-color: rgb(226, 236, 255);
 }
 
 .active {
-  background-color: rgb(224, 224, 224);
+  background-color: rgb(226, 236, 255);
 }
 
 .toggle img {

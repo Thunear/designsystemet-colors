@@ -50,19 +50,19 @@ export const PreviewBox = () => {
         </Tabs>
         <div className={classes.checkList}>
           <Checkbox size="small" value="value">
-            Checkbox
+            Lasagne
           </Checkbox>
           <Checkbox size="small" value="value">
-            Checkbox
+            Pizza
           </Checkbox>
           <Checkbox size="small" value="value">
-            Checkbox
+            Spaghetti
           </Checkbox>
           <Checkbox size="small" value="value" checked>
-            Checkbox
+            Taco
           </Checkbox>
           <Checkbox size="small" value="value" checked>
-            Checkbox
+            Hamburger
           </Checkbox>
         </div>
         <div className={classes.chips}>

@@ -22,14 +22,14 @@
 }
 
 .container {
-  height: 90px;
+  height: 88px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .active {
-  border-color: rgb(163, 163, 163) !important;
+  border-color: rgb(185, 185, 185) !important;
   font-weight: 500;
 }
 
@@ -42,7 +42,7 @@
 .tag {
   background-color: #ffe3f9;
   border-radius: 4px;
-  padding: 7px 9px;
+  padding: 7px 11px;
   font-size: 18px;
   font-weight: 500;
 }

@@ -21,10 +21,7 @@ export const tokenMapping = {
       "--fds-semantic-border-action-first-subtle",
     ],
     default: ["--fds-semantic-border-action-first-subtle-hover"],
-    strong: [
-      "--fds-semantic-border-neutral-default",
-      "--fds-semantic-border-action-first-default",
-    ],
+    strong: ["--fds-semantic-border-neutral-default"],
   },
   solids: {
     normal: [
@@ -32,6 +29,7 @@ export const tokenMapping = {
       "--fds-semantic-border-action-default",
       "--fds-semantic-surface-success-default",
       "--fds-semantic-surface-action-first-default",
+      "--fds-semantic-border-action-first-default",
     ],
     hover: [
       "--fds-semantic-surface-success-hover",
@@ -44,11 +42,11 @@ export const tokenMapping = {
       "--fds-semantic-text-neutral-subtle",
       "--fds-semantic-text-action-hover",
       "--fds-semantic-text-action-first-hover",
+      "--fds-semantic-text-action-first-default",
     ],
     default: [
       "--fds-semantic-text-action-default",
       "--fds-semantic-text-neutral-default",
-      "--fds-semantic-text-action-first-default",
     ],
   },
 };
