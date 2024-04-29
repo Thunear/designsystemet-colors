@@ -47,11 +47,11 @@ export const generateColorScale = (
   let lightnessScale: number[] = [];
 
   if (mode === "light") {
-    lightnessScale = [98, 95, 90, 85, 80, 70, 60, 50, 35, 20];
+    lightnessScale = [98, 95, 92, 87, 82, 70, 60, 50, 35, 20];
   } else if (mode === "dark") {
-    lightnessScale = [14, 10, 10, 15, 20, 35, 45, 55, 65, 80];
+    lightnessScale = [14, 10, 16, 19, 22, 35, 45, 55, 65, 80];
   } else {
-    lightnessScale = [7, 1, 5, 10, 15, 45, 55, 65, 75, 90];
+    lightnessScale = [7, 1, 11, 14, 17, 45, 55, 65, 75, 90];
   }
 
   const getColorContrasts = (

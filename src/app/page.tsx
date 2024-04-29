@@ -16,6 +16,7 @@ import { Dashboard } from "./components/Previews/Dashboard/Dashboard";
 
 import cn from "classnames";
 import { Button, DropdownMenu } from "@digdir/designsystemet-react";
+import { Landing } from "./components/Previews/Landing/Landing";
 
 type modeType = "light" | "dark" | "contrast";
 type previewModeType = "dashboard" | "landing" | "forms" | "auth";
@@ -227,18 +228,24 @@ export default function Home() {
                 Landingsside
               </div>
               <div
-                className={cn(classes.menuItem, {
-                  [classes.menuItemActive]: previewMode === "forms",
-                })}
-                onClick={() => setPreviewMode("forms")}
+                className={cn(
+                  classes.menuItem,
+                  {
+                    [classes.menuItemActive]: previewMode === "forms",
+                  },
+                  classes.menuItemDisabled
+                )}
               >
                 Skjemaer
               </div>
               <div
-                className={cn(classes.menuItem, {
-                  [classes.menuItemActive]: previewMode === "auth",
-                })}
-                onClick={() => setPreviewMode("auth")}
+                className={cn(
+                  classes.menuItem,
+                  {
+                    [classes.menuItemActive]: previewMode === "auth",
+                  },
+                  classes.menuItemDisabled
+                )}
               >
                 Autentisering
               </div>
@@ -272,7 +279,8 @@ export default function Home() {
           </div>
 
           <div className={cn(classes.preview, classes[themeMode])} id="preview">
-            <Dashboard />
+            {previewMode === "dashboard" && <Dashboard />}
+            {previewMode === "landing" && <Landing />}
           </div>
           {/* <PreviewBox /> */}
         </Container>

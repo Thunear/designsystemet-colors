@@ -45,7 +45,7 @@
 }
 
 .btnActive {
-  background-color: var(--accent2);
+  background-color: var(--accent3);
   color: var(--fds-semantic-text-neutral-default);
 }
 

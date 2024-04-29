@@ -1,16 +1,16 @@
 .colorCard {
-  background-color: var(--brandOne2);
+  background-color: var(--brandOne3);
   width: 270px;
   border-radius: 8px;
   padding: 24px;
 }
 
 .colorCardTwo {
-  background-color: var(--brandTwo2);
+  background-color: var(--brandTwo3);
 }
 
 .colorCardThree {
-  background-color: var(--brandThree2);
+  background-color: var(--brandThree3);
 }
 
 .colorCardIcon {

@@ -167,6 +167,13 @@
   background-color: rgb(225, 236, 255);
 }
 
+.menuItemDisabled,
+.menuItemDisabled:hover {
+  cursor: not-allowed;
+  opacity: 0.6;
+  background-color: transparent !important;
+}
+
 .preview {
   border: 1px solid rgb(235, 235, 235);
   width: 100%;
