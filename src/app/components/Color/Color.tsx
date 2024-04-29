@@ -9,7 +9,7 @@ type ColorProps = {
   contrast?: string;
   lightness?: string;
   featured?: boolean;
-  whiteText?: boolean;
+
   hex?: string;
   showColorMeta?: boolean;
 };
@@ -18,7 +18,6 @@ const Color = ({
   color,
   contrast,
   featured,
-  whiteText,
   lightness,
   hex,
   showColorMeta = true,
@@ -39,11 +38,7 @@ const Color = ({
             setTooltipText(hex);
           }}
           style={{ backgroundColor: color }}
-          className={cn(
-            classes.box,
-            { [classes.featured]: featured },
-            { [classes.whiteText]: whiteText }
-          )}
+          className={cn(classes.box, { [classes.featured]: featured })}
         ></div>
       </Tooltip>
 

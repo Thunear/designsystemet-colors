@@ -1,44 +1,25 @@
 import classes from "./Scale.module.css";
 import { Group } from "../Group/Group";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import { CssColor } from "@adobe/leonardo-contrast-colors";
 import { tokenMapping as tokens } from "@/utils/tokenMapping";
-import { buildColorScale } from "@/utils/themeUtils";
-import { modeType } from "@/types";
+import { generateColorScale } from "@/utils/themeUtils";
+import { modeType, colorType, colorsType } from "@/types";
 
 type ScaleProps = {
   color: CssColor;
   showHeader?: boolean;
   showColorMeta?: boolean;
   themeMode: modeType;
-  type: "accent" | "grey";
+  type: "accent" | "grey" | "brandOne" | "brandTwo" | "brandThree";
 };
 
-type ColorType = {
-  color: CssColor;
-  text: string;
-  whiteText?: boolean;
-  lightness: string;
-};
-
-type ColorsType = {
-  backgrounds: ColorType[];
-  components: ColorType[];
-  borders: ColorType[];
-  text: ColorType[];
-  solids: ColorType[];
-};
-
-const setToken = (token: string, color: string) => {
+const setTokens = (lightColors: any, type: string) => {
   const previewElement = document.getElementById("preview");
   if (previewElement) {
-    previewElement.style.setProperty(token, color);
-  }
-};
-
-const setTokens = (tokens: string[], color: string) => {
-  for (const token of tokens) {
-    setToken(token, color);
+    for (let i = 0; i < lightColors.length; i++) {
+      previewElement.style.setProperty("--" + type + (i + 1), lightColors[i]);
+    }
   }
 };
 
@@ -49,100 +30,83 @@ export const Scale = ({
   themeMode,
   type,
 }: ScaleProps) => {
-  const [colors, setColors] = useState<ColorsType>({
-    backgrounds: [],
-    components: [],
-    borders: [],
-    text: [],
-    solids: [],
+  // Is there a way to not have to set this default value?
+  const [colors, setColors] = useState<colorsType>({
+    background: {
+      subtle: { color: "#ffffff", contrast: "", lightness: "" },
+      default: { color: "#ffffff", contrast: "", lightness: "" },
+    },
+    component: {
+      normal: { color: "#ffffff", contrast: "", lightness: "" },
+      hover: { color: "#ffffff", contrast: "", lightness: "" },
+      active: { color: "#ffffff", contrast: "", lightness: "" },
+    },
+    border: {
+      subtle: { color: "#ffffff", contrast: "", lightness: "" },
+      default: { color: "#ffffff", contrast: "", lightness: "" },
+      strong: { color: "#ffffff", contrast: "", lightness: "" },
+    },
+    solid: {
+      normal: { color: "#ffffff", contrast: "", lightness: "" },
+      hover: { color: "#ffffff", contrast: "", lightness: "" },
+      active: { color: "#ffffff", contrast: "", lightness: "" },
+    },
+    text: {
+      subtle: { color: "#ffffff", contrast: "", lightness: "" },
+      default: { color: "#ffffff", contrast: "", lightness: "" },
+    },
   });
 
   useEffect(() => {
-    const lightColors = buildColorScale(color, themeMode);
-    setColors(lightColors);
+    const lightColors = generateColorScale(color, themeMode);
+    const colorsFlat = generateColorScale(color, themeMode, "flat");
 
-    if (type === "accent") {
-      setTokens(tokens.background.subtle, lightColors.backgrounds[0].color);
-
-      // Background default
-      setTokens(tokens.background.default, lightColors.backgrounds[1].color);
-
-      // Component normal
-      setTokens(tokens.component.normal, lightColors.components[0].color);
-
-      // Component hover
-      setTokens(tokens.component.hover, lightColors.components[1].color);
-
-      // Component active
-      setTokens(tokens.component.active, lightColors.components[2].color);
-
-      // Border subtle
-      setTokens(tokens.border.subtle, lightColors.borders[0].color);
-
-      // Border default
-      setTokens(tokens.border.default, lightColors.borders[1].color);
-
-      // Border strong
-      setTokens(tokens.border.strong, lightColors.borders[2].color);
-
-      // Solid normal
-      setTokens(tokens.solids.normal, lightColors.solids[0].color);
-
-      // Solid hover
-      setTokens(tokens.solids.hover, lightColors.solids[1].color);
-
-      // Solid active
-      setTokens(tokens.solids.active, lightColors.solids[2].color);
-
-      // Text subtle
-      setTokens(tokens.text.subtle, lightColors.text[0].color);
-
-      // Text default
-      setTokens(tokens.text.default, lightColors.text[1].color);
-    } else {
-      setToken(
-        "--fds-semantic-border-input-default",
-        lightColors.borders[2].color
-      );
-
-      setToken("--input-placeholder", lightColors.borders[2].color);
-      setToken(
-        "--fds-semantic-surface-neutral-dark",
-        lightColors.borders[2].color
-      );
-    }
+    setColors(lightColors as SetStateAction<colorsType>);
+    setTokens(colorsFlat, type);
   }, [color, themeMode, type]);
   return (
     <div className={classes.themes}>
       <div className={classes.test}>
         <Group
           header={showHeader ? "Bakgrunner" : ""}
-          colors={colors.backgrounds}
+          colors={[colors?.background.subtle, colors?.background.default]}
           showColorMeta={showColorMeta}
           names={["Subtle", "Default"]}
         />
         <Group
           header={showHeader ? "Komponent UI" : ""}
-          colors={colors.components}
+          colors={[
+            colors?.component.normal,
+            colors?.component.hover,
+            colors?.component.active,
+          ]}
           showColorMeta={showColorMeta}
           names={["Normal", "Hover", "Active"]}
         />
         <Group
           showColorMeta={showColorMeta}
           header={showHeader ? "Bordere" : ""}
-          colors={colors.borders}
+          colors={[
+            colors?.border.subtle,
+            colors?.border.default,
+            colors?.border.strong,
+          ]}
           names={["Subtle", "Default", "Strong"]}
         />
         <Group
           showColorMeta={showColorMeta}
           header={showHeader ? "Solide farger" : ""}
-          colors={colors.solids}
+          colors={[
+            colors?.solid.normal,
+            colors?.solid.hover,
+            colors?.solid.active,
+          ]}
           names={["Normal", "Hover", "Active"]}
         />
         <Group
           showColorMeta={showColorMeta}
           header={showHeader ? "Tekst" : ""}
-          colors={colors.text}
+          colors={[colors?.text.subtle, colors?.text.default]}
           names={["Subtle", "Default"]}
         />
       </div>

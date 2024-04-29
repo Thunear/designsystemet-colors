@@ -13,3 +13,7 @@ body {
   .fds-switch-thumb-9a6b03bc {
   background-image: none;
 }
+
+:root {
+  --background: white;
+}

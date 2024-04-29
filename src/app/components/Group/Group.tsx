@@ -4,8 +4,7 @@ import { CssColor } from "@adobe/leonardo-contrast-colors";
 
 type ColorType = {
   color: CssColor;
-  text: string;
-  whiteText: boolean;
+  contrast: string;
   lightness: string;
 };
 
@@ -33,8 +32,7 @@ export const Group = ({ header, colors, showColorMeta, names }: GroupProps) => {
             <Color
               key={index}
               color={item.color}
-              contrast={item.text}
-              whiteText={item.whiteText}
+              contrast={item.contrast}
               lightness={item.lightness}
               hex={item.color}
               showColorMeta={showColorMeta}
