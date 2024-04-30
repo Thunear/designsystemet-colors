@@ -86,12 +86,8 @@ export const Scale = ({
         <Group
           showColorMeta={showColorMeta}
           header={showHeader ? "Bordere" : ""}
-          colors={[
-            colors?.border.subtle,
-            colors?.border.default,
-            colors?.border.strong,
-          ]}
-          names={["Subtle", "Default", "Strong"]}
+          colors={[colors?.border.subtle, colors?.border.default]}
+          names={["Subtle", "Default"]}
         />
         <Group
           showColorMeta={showColorMeta}
