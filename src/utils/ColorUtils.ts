@@ -177,6 +177,15 @@ export const getLightnessFromHex = (hex: string) => {
   return Number(conv.hsluv_l.toFixed(0));
 };
 
+export const getContrastFromHex = (
+  mainColor: CssColor,
+  backgroundColor: CssColor
+) => {
+  let lum1 = luminanceFromHex(mainColor);
+  let lum2 = luminanceFromHex(backgroundColor);
+  return getRatioFromLum(lum1, lum2);
+};
+
 export const getContrastFromLightness = (
   lightness: number,
   mainColor: CssColor,

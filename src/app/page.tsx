@@ -11,8 +11,9 @@ import { CssColor } from "@adobe/leonardo-contrast-colors";
 import { PreviewBox } from "./components/PreviewBox/PreviewBox";
 import { Container, Row, Col } from "react-bootstrap";
 import { tokenMapping } from "@/utils/tokenMapping";
-import { ChevronDownIcon } from "@navikt/aksel-icons";
+import { CheckmarkIcon, XMarkIcon } from "@navikt/aksel-icons";
 import { Dashboard } from "./components/Previews/Dashboard/Dashboard";
+import { getContrastFromHex } from "@/utils/ColorUtils";
 
 import cn from "classnames";
 import { Button, DropdownMenu } from "@digdir/designsystemet-react";
@@ -120,6 +121,29 @@ export default function Home() {
     mapTokens();
   }, []);
 
+  const getContrastSection = (contrast: number) => {
+    if (contrast >= 4.5) {
+      return (
+        <div
+          className={cn(
+            classes.contrastSection,
+            classes.contrastSectionSuccess
+          )}
+        >
+          <CheckmarkIcon title="a11y-title" fontSize="1.9rem" />
+          <span>{contrast.toFixed(1)}:1</span>
+        </div>
+      );
+    } else {
+      return (
+        <div className={classes.contrastSection}>
+          <XMarkIcon title="a11y-title" fontSize="1.9rem" />
+          <span>{contrast.toFixed(1)}:1</span>
+        </div>
+      );
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -137,6 +161,7 @@ export default function Home() {
                   setAccentColor(e);
                 }}
               />
+              {getContrastSection(getContrastFromHex(accentColor, "#ffffff"))}
               <Scale
                 color={accentColor}
                 showHeader
@@ -153,6 +178,7 @@ export default function Home() {
                   setGreyColor(e);
                 }}
               />
+              {getContrastSection(getContrastFromHex(greyColor, "#ffffff"))}
               <Scale
                 color={greyColor}
                 showColorMeta={false}
