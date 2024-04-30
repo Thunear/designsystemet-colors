@@ -127,6 +127,10 @@
   gap: 16px;
 }
 
+.userName {
+  font-size: 16px;
+}
+
 .user img {
   width: 44px;
   height: 44px;

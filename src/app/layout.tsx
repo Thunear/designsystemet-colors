@@ -5,7 +5,11 @@ import "./globals.css";
 import "@digdir/designsystemet-theme";
 import "@digdir/designsystemet-css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Fargevelger - Designsystemet",
