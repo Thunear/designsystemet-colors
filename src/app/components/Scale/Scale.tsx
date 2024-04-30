@@ -68,13 +68,13 @@ export const Scale = ({
     <div className={classes.themes}>
       <div className={classes.test}>
         <Group
-          header={showHeader ? "Bakgrunner" : ""}
+          header={showHeader ? "Background" : ""}
           colors={[colors?.background.subtle, colors?.background.default]}
           showColorMeta={showColorMeta}
           names={["Subtle", "Default"]}
         />
         <Group
-          header={showHeader ? "Komponent UI" : ""}
+          header={showHeader ? "Surface" : ""}
           colors={[
             colors?.component.normal,
             colors?.component.hover,
@@ -85,13 +85,13 @@ export const Scale = ({
         />
         <Group
           showColorMeta={showColorMeta}
-          header={showHeader ? "Bordere" : ""}
+          header={showHeader ? "Border" : ""}
           colors={[colors?.border.subtle, colors?.border.default]}
           names={["Subtle", "Default"]}
         />
         <Group
           showColorMeta={showColorMeta}
-          header={showHeader ? "Solide farger" : ""}
+          header={showHeader ? "Base" : ""}
           colors={[
             colors?.solid.normal,
             colors?.solid.hover,
@@ -101,7 +101,7 @@ export const Scale = ({
         />
         <Group
           showColorMeta={showColorMeta}
-          header={showHeader ? "Tekst" : ""}
+          header={showHeader ? "Text" : ""}
           colors={[colors?.text.subtle, colors?.text.default]}
           names={["Subtle", "Default"]}
         />
