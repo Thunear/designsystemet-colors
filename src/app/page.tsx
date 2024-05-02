@@ -18,9 +18,15 @@ import { getContrastFromHex } from "@/utils/ColorUtils";
 import cn from "classnames";
 import { Button, DropdownMenu } from "@digdir/designsystemet-react";
 import { Landing } from "./components/Previews/Landing/Landing";
+import { Components } from "./components/Previews/Components/Components";
 
 type modeType = "light" | "dark" | "contrast";
-type previewModeType = "dashboard" | "landing" | "forms" | "auth";
+type previewModeType =
+  | "dashboard"
+  | "landing"
+  | "forms"
+  | "auth"
+  | "components";
 
 const setToken = (token: string, color: string) => {
   const previewElement = document.getElementById("preview");
@@ -41,14 +47,19 @@ const setTokenForClass = (token: string, color: string, className: string) => {
 
 const mapTokens = () => {
   // Background subtle
-  setToken("--fds-semantic-background-subtle", "var(--grey1)");
+  setToken("--fds-semantic-background-subtle", "var(--grey2)");
+  setToken("--fds-semantic-surface-neutral-default", "var(--grey1)");
 
   // Background default
-  setToken("--fds-semantic-background-default", "var(--grey2)");
+  setToken("--fds-semantic-background-default", "var(--grey1)");
 
   // Component normal
   setToken("--fds-semantic-surface-action-first-subtle", "var(--accent3)");
   setToken("--fds-semantic-surface-action-first-no_fill", "var(--accent3)");
+  setToken("--fds-semantic-surface-first-light", "var(--brandOne3)");
+  setToken("--fds-semantic-surface-second-light", "var(--brandTwo3)");
+  setToken("--fds-semantic-surface-third-light", "var(--brandThree3)");
+  setToken("--fds-semantic-surface-neutral-subtle", "var(--grey3)");
 
   // Component hover
   setToken("--fds-semantic-surface-info-subtle-hover", "var(--accent4)");
@@ -60,6 +71,9 @@ const mapTokens = () => {
     "--fds-semantic-surface-action-first-no_fill-hover",
     "var(--accent4)"
   );
+  setToken("--fds-semantic-surface-first-light-hover", "var(--brandOne4)");
+  setToken("--fds-semantic-surface-second-light-hover", "var(--brandTwo4)");
+  setToken("--fds-semantic-surface-third-light-hover", "var(--brandThree4)");
 
   // Component active
   setToken(
@@ -70,39 +84,44 @@ const mapTokens = () => {
   // Border subtle
   setToken("--fds-semantic-border-neutral-subtle", "var(--accent6)");
   setToken("--fds-semantic-border-action-first-subtle", "var(--accent6)");
+  setToken("--fds-semantic-border-first", "var(--brandOne6)");
+  setToken("--fds-semantic-border-second", "var(--brandTwo6)");
+  setToken("--fds-semantic-border-third", "var(--brandThree6)");
+  setToken("--fds-semantic-border-first-default", "var(--brandOne6)");
+  setToken("--fds-semantic-border-second-default", "var(--brandTwo6)");
+  setToken("--fds-semantic-border-third-default", "var(--brandThree6)");
+  setToken("--fds-semantic-border-divider-default", "var(--grey6)");
 
   // Border default
   setToken("--fds-semantic-border-action-first-subtle-hover", "var(--accent7)");
-
-  // Border strong
-  setToken("--fds-semantic-border-neutral-default", "var(--accent8)");
-  setToken("--input-placeholder", "--grey8");
-  setToken("--fds-semantic-surface-neutral-dark", "var(--grey8)");
-  setToken("--fds-semantic-border-input-default", "var(--grey8)");
+  setToken("--fds-semantic-border-neutral-default", "var(--accent7)");
+  setToken("--input-placeholder", "--grey7");
+  setToken("--fds-semantic-surface-neutral-dark", "var(--grey7)");
+  setToken("--fds-semantic-border-input-default", "var(--grey7)");
 
   // Solid normal
-  setToken("--fds-semantic-border-input-hover", "var(--accent9)");
-  setToken("--fds-semantic-border-action-default", "var(--accent9)");
-  setToken("--fds-semantic-surface-success-default", "var(--accent9)");
-  setToken("--fds-semantic-surface-action-first-default", "var(--accent9)");
-  setToken("--fds-semantic-border-action-first-default", "var(--accent9)");
+  setToken("--fds-semantic-border-input-hover", "var(--accent8)");
+  setToken("--fds-semantic-border-action-default", "var(--accent8)");
+  setToken("--fds-semantic-surface-success-default", "var(--accent8)");
+  setToken("--fds-semantic-surface-action-first-default", "var(--accent8)");
+  setToken("--fds-semantic-border-action-first-default", "var(--accent8)");
 
   // Solid hover
-  setToken("--fds-semantic-surface-success-hover", "var(--accent10)");
-  setToken("--fds-semantic-surface-action-first-hover", "var(--accent10)");
+  setToken("--fds-semantic-surface-success-hover", "var(--accent9)");
+  setToken("--fds-semantic-surface-action-first-hover", "var(--accent9)");
 
   // Solid active
-  setToken("--fds-semantic-surface-action-first-active", "var(--accent11)");
+  setToken("--fds-semantic-surface-action-first-active", "var(--accent10)");
 
   // Text subtle
-  setToken("--fds-semantic-text-neutral-subtle", "var(--grey12)");
-  setToken("--fds-semantic-text-action-hover", "var(--accent12)");
-  setToken("--fds-semantic-text-action-first-hover", "var(--accent12)");
-  setToken("--fds-semantic-text-action-first-default", "var(--accent12)");
+  setToken("--fds-semantic-text-neutral-subtle", "var(--grey11)");
+  setToken("--fds-semantic-text-action-hover", "var(--accent11)");
+  setToken("--fds-semantic-text-action-first-hover", "var(--accent11)");
+  setToken("--fds-semantic-text-action-first-default", "var(--accent11)");
+  setToken("--fds-semantic-text-action-default", "var(--accent11)");
 
   // Text default
-  setToken("-fds-semantic-text-action-default", "var(--accent13)");
-  setToken("--fds-semantic-text-neutral-default", "var(--grey13)");
+  setToken("--fds-semantic-text-neutral-default", "var(--grey12)");
 
   // Custom
   setToken("--background", "var(--grey1)");
@@ -115,7 +134,7 @@ export default function Home() {
   const [brandTwoColor, setBrandTwoColor] = useState<CssColor>("#E5AA20");
   const [brandThreeColor, setBrandThreeColor] = useState<CssColor>("#1E98F5");
   const [themeMode, setThemeMode] = useState<modeType>("light");
-  const [previewMode, setPreviewMode] = useState<previewModeType>("dashboard");
+  const [previewMode, setPreviewMode] = useState<previewModeType>("components");
 
   useEffect(() => {
     mapTokens();
@@ -239,6 +258,14 @@ export default function Home() {
             <div className={classes.menu}>
               <div
                 className={cn(classes.menuItem, {
+                  [classes.menuItemActive]: previewMode === "components",
+                })}
+                onClick={() => setPreviewMode("components")}
+              >
+                Komponenter
+              </div>
+              <div
+                className={cn(classes.menuItem, {
                   [classes.menuItemActive]: previewMode === "dashboard",
                 })}
                 onClick={() => setPreviewMode("dashboard")}
@@ -246,10 +273,13 @@ export default function Home() {
                 Dashboard
               </div>
               <div
-                className={cn(classes.menuItem, {
-                  [classes.menuItemActive]: previewMode === "landing",
-                })}
-                onClick={() => setPreviewMode("landing")}
+                className={cn(
+                  classes.menuItem,
+                  {
+                    [classes.menuItemActive]: previewMode === "landing",
+                  },
+                  classes.menuItemDisabled
+                )}
               >
                 Landingsside
               </div>
@@ -305,6 +335,7 @@ export default function Home() {
           </div>
 
           <div className={cn(classes.preview, classes[themeMode])} id="preview">
+            {previewMode === "components" && <Components />}
             {previewMode === "dashboard" && <Dashboard />}
             {previewMode === "landing" && <Landing />}
           </div>

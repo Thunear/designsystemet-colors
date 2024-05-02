@@ -11,7 +11,7 @@ export type colorType = {
 export type colorsType = {
   background: { subtle: colorType; default: colorType };
   component: { normal: colorType; hover: colorType; active: colorType };
-  border: { subtle: colorType; default: colorType; strong: colorType };
+  border: { subtle: colorType; default: colorType };
   solid: { normal: colorType; hover: colorType; active: colorType };
   text: { subtle: colorType; default: colorType };
 };

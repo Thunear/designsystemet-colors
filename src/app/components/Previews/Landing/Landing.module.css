@@ -39,7 +39,7 @@
   font-weight: 500;
   gap: 10px;
   font-size: 21px;
-  color: var(--grey13);
+  color: var(--grey12);
 }
 
 .headerRight {
@@ -85,7 +85,7 @@
 }
 
 .bannerSub {
-  color: var(--accent12);
+  color: var(--accent11);
   font-weight: 500;
   font-size: 21px;
 }

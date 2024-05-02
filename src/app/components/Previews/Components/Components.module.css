@@ -1,0 +1,221 @@
+.components {
+  background-color: var(--grey2);
+  border-radius: 12px;
+  width: 100%;
+  padding: 24px;
+  display: flex;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    "checkbox checkbox checkbox user user user table table table table table table"
+    "help help help help help help radio radio radio tag tag tag"
+    "tabs tabs tabs tabs test test test faq faq faq faq faq";
+  column-gap: 24px;
+  row-gap: 24px;
+}
+
+.card {
+  background-color: var(--grey1);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.cardTitle {
+  margin-bottom: 16px;
+}
+
+.checkbox {
+  grid-area: checkbox;
+  padding-bottom: 16px;
+}
+
+.user {
+  grid-area: user;
+}
+
+.userLink {
+  display: block;
+  text-align: right;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.userTitle {
+  text-align: center;
+}
+
+.userField {
+  margin-top: 24px;
+}
+
+.userField input {
+  background-color: var(--grey1);
+  color: var(--grey12);
+}
+
+.userBtn {
+  margin-top: 32px;
+}
+
+.userPar {
+  margin-bottom: -4px;
+  margin-top: -7px;
+}
+
+.tableContainer {
+  grid-area: table;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 24px;
+  margin-top: 16px;
+}
+
+.table button {
+  color: var(--grey12);
+}
+
+.table thead button {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.tableCell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 12px;
+}
+
+.tableImg {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+.tableAction {
+  display: flex;
+  align-items: center;
+}
+
+.tableSelect {
+  width: 160px;
+}
+
+.tableHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.tableSearch {
+  width: 260px;
+}
+
+.tableSearch input {
+  background-color: var(--grey1);
+  color: var(--grey12);
+}
+
+.tableBtn {
+  margin-left: 20px;
+}
+
+.help {
+  grid-area: help;
+}
+
+.helpCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.helpFirst {
+  border-color: var(--fds-semantic-border-first);
+}
+.helpFirstTitle {
+  color: var(--brandOne11);
+}
+.helpFirstDesc {
+  color: var(--brandOne11);
+}
+
+.helpSecond {
+  border-color: var(--fds-semantic-border-second);
+}
+.helpSecondTitle {
+  color: var(--brandTwo11);
+}
+.helpSecondDesc {
+  color: var(--brandTwo11);
+}
+.helpThird {
+  border-color: var(--fds-semantic-border-third);
+}
+.helpThirdTitle {
+  color: var(--brandThree11);
+}
+.helpThirdDesc {
+  color: var(--brandThree11);
+}
+
+.helpHeader {
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
+  margin-bottom: -10px;
+}
+
+.helpHeading {
+  margin-bottom: 20px;
+}
+
+.helpContent {
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+.test {
+  grid-area: test;
+}
+
+.radio {
+  grid-area: radio;
+}
+
+.tag {
+  grid-area: tag;
+}
+
+.tagList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.tabs {
+  grid-area: tabs;
+}
+
+.faq {
+  grid-area: faq;
+}
+
+.accordion > div button {
+  border-top: 1px solid var(--brandThree6);
+  border-radius: 0;
+}
+
+.accordion > div:first-child button {
+  border: none;
+  border-radius: 4px 4px 0 0;
+}

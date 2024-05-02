@@ -1,5 +1,5 @@
 .dashboard {
-  background-color: var(--fds-semantic-background-default);
+  background-color: var(--grey2);
   width: 100%;
   position: relative;
   min-height: 815px;
@@ -147,20 +147,20 @@
   font-size: 15px;
   min-height: 8px;
   display: block;
-  color: var(--brandOne12);
+  color: var(--brandOne11);
   font-weight: 500;
 }
 
 .userRoleTwo {
-  color: var(--brandTwo12);
+  color: var(--brandTwo11);
 }
 
 .userRoleThree {
-  color: var(--brandThree12);
+  color: var(--brandThree11);
 }
 
 .userName {
-  color: var(--grey13);
+  color: var(--grey12);
 }
 
 .userTextContainer {

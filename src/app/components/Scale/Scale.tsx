@@ -44,7 +44,6 @@ export const Scale = ({
     border: {
       subtle: { color: "#ffffff", contrast: "", lightness: "" },
       default: { color: "#ffffff", contrast: "", lightness: "" },
-      strong: { color: "#ffffff", contrast: "", lightness: "" },
     },
     solid: {
       normal: { color: "#ffffff", contrast: "", lightness: "" },
@@ -71,7 +70,7 @@ export const Scale = ({
           header={showHeader ? "Background" : ""}
           colors={[colors?.background.subtle, colors?.background.default]}
           showColorMeta={showColorMeta}
-          names={["Subtle", "Default"]}
+          names={["Default", "Subtle"]}
         />
         <Group
           header={showHeader ? "Surface" : ""}
