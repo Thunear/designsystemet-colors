@@ -174,7 +174,7 @@ export default function Home() {
           <div className={classes.rows}>
             <div className={classes.row}>
               <ColorPicker
-                label="Accent farge"
+                label="Accent"
                 defaultColor="#0062BA"
                 onColorChanged={(e: any) => {
                   setAccentColor(e);
@@ -191,7 +191,7 @@ export default function Home() {
             </div>
             <div className={classes.row}>
               <ColorPicker
-                label="Gråfarge"
+                label="Neutral"
                 defaultColor="#1E2B3C"
                 onColorChanged={(e: any) => {
                   setGreyColor(e);
