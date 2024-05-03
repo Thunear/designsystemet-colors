@@ -28,7 +28,6 @@ import cn from "classnames";
 import { Button, DropdownMenu } from "@digdir/designsystemet-react";
 import { Landing } from "./components/Previews/Landing/Landing";
 import { Components } from "./components/Previews/Components/Components";
-import { setContrastTwoColor } from "@/utils/themeUtils";
 
 type modeType = "light" | "dark" | "contrast";
 type previewModeType =
@@ -132,6 +131,7 @@ const mapTokens = () => {
 
   // Text default
   setToken("--fds-semantic-text-neutral-default", "var(--grey13)");
+  setToken("--fds-semantic-text-action-first-on_action", "var(--accent14)");
 
   // Custom
   setToken("--background", "var(--grey1)");
@@ -147,9 +147,24 @@ export default function Home() {
   const [previewMode, setPreviewMode] = useState<previewModeType>("components");
 
   useEffect(() => {
-    const a = setContrastTwoColor("#0062BA");
     mapTokens();
   }, []);
+
+  // Sticky Menu Area
+  useEffect(() => {
+    window.addEventListener("scroll", isSticky);
+    return () => {
+      window.removeEventListener("scroll", isSticky);
+    };
+  });
+
+  const isSticky = (e) => {
+    const header = document.querySelector(".pickers");
+    const scrollTop = window.scrollY;
+    scrollTop >= 250
+      ? header.classList.add("is-sticky")
+      : header.classList.remove("is-sticky");
+  };
 
   const getContrastSection = (contrast: number) => {
     if (contrast >= 4.5) {
@@ -182,42 +197,44 @@ export default function Home() {
           <div>
             <h1 className={classes.title}>Sett opp fargetema</h1>
           </div>
-          <div className={classes.pickers}>
-            <ColorPicker
-              label="Accent"
-              defaultColor="#0062BA"
-              onColorChanged={(e: any) => {
-                setAccentColor(e);
-              }}
-            />
-            <ColorPicker
-              label="Neutral"
-              defaultColor="#1E2B3C"
-              onColorChanged={(e: any) => {
-                setGreyColor(e);
-              }}
-            />
-            <ColorPicker
-              label="Brandfarge 1"
-              defaultColor="#F45F63"
-              onColorChanged={(e: any) => {
-                setBrandOneColor(e);
-              }}
-            />
-            <ColorPicker
-              label="Brandfarge 2"
-              defaultColor="#E5AA20"
-              onColorChanged={(e: any) => {
-                setBrandTwoColor(e);
-              }}
-            />
-            <ColorPicker
-              label="Brandfarge 3"
-              defaultColor="#1E98F5"
-              onColorChanged={(e: any) => {
-                setBrandThreeColor(e);
-              }}
-            />
+          <div className={classes.pickersContainer}>
+            <div className={cn(classes.pickers, "pickers")}>
+              <ColorPicker
+                label="Accent"
+                defaultColor="#0062BA"
+                onColorChanged={(e: any) => {
+                  setAccentColor(e);
+                }}
+              />
+              <ColorPicker
+                label="Neutral"
+                defaultColor="#1E2B3C"
+                onColorChanged={(e: any) => {
+                  setGreyColor(e);
+                }}
+              />
+              <ColorPicker
+                label="Brandfarge 1"
+                defaultColor="#F45F63"
+                onColorChanged={(e: any) => {
+                  setBrandOneColor(e);
+                }}
+              />
+              <ColorPicker
+                label="Brandfarge 2"
+                defaultColor="#E5AA20"
+                onColorChanged={(e: any) => {
+                  setBrandTwoColor(e);
+                }}
+              />
+              <ColorPicker
+                label="Brandfarge 3"
+                defaultColor="#1E98F5"
+                onColorChanged={(e: any) => {
+                  setBrandThreeColor(e);
+                }}
+              />
+            </div>
           </div>
           <div className={classes.rows}>
             <div className={classes.row}>

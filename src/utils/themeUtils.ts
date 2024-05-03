@@ -123,7 +123,7 @@ export const generateColorScale = (
       normal: setColorObject(themeValues[8]),
       hover: setColorObject(themeValues[9]),
       active: setColorObject(themeValues[10]),
-      contrastOne: setContrastOneColor(color),
+      contrastOne: setContrastOneColor(themeValues[10].value),
       contrastTwo: setContrastOneColor(color),
     },
     text: {
@@ -155,43 +155,6 @@ const setContrastOneColor = (color: CssColor) => {
       : colorLightness - doubleALightnessModifier;
   const t = createTheme(color, targetLightness);
   outputColor.color = t;
-  console.log("contrastWhite: ", contrastWhite.toFixed(2));
-  console.log("contrastBlack: ", contrastBlack.toFixed(2));
-  console.log("contrastDirection: ", contrastDirection);
-  console.log("colorLightness: ", colorLightness);
-  console.log("targetLightness: ", targetLightness);
-  console.log("targetColor: ", t);
-
-  return outputColor;
-};
-
-export const setContrastTwoColor = (color: CssColor) => {
-  const outputColor = {
-    color: "#ffffff",
-    contrast: "d",
-    lightness: "5",
-  };
-  const contrastWhite = getContrastFromHex(color, "#ffffff");
-  const colorLightness = getLightnessFromHex(color);
-  const contrastBlack = getContrastFromHex(color, "#000000");
-  const doubleALightnessModifier = 47;
-  let targetLightness = 0;
-  const contrastDirection =
-    contrastWhite > contrastBlack ? "lighten" : "darken";
-
-  targetLightness =
-    contrastDirection === "lighten"
-      ? colorLightness + doubleALightnessModifier
-      : colorLightness - doubleALightnessModifier;
-
-  console.log("contrastWhite: ", contrastWhite.toFixed(2));
-  console.log("contrastBlack: ", contrastBlack.toFixed(2));
-  console.log("contrastDirection: ", contrastDirection);
-  console.log("colorLightness: ", colorLightness);
-  console.log("targetLightness: ", targetLightness);
-  const t = createTheme(color, targetLightness);
-  outputColor.color = t;
-  console.log("targetColor: ", t);
 
   return outputColor;
 };
