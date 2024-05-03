@@ -44,6 +44,7 @@ export const Scale = ({
     border: {
       subtle: { color: "#ffffff", contrast: "", lightness: "" },
       default: { color: "#ffffff", contrast: "", lightness: "" },
+      strong: { color: "#ffffff", contrast: "", lightness: "" },
     },
     solid: {
       normal: { color: "#ffffff", contrast: "", lightness: "" },
@@ -80,13 +81,17 @@ export const Scale = ({
             colors?.component.active,
           ]}
           showColorMeta={showColorMeta}
-          names={["Normal", "Hover", "Active"]}
+          names={["Default", "Hover", "Active"]}
         />
         <Group
           showColorMeta={showColorMeta}
           header={showHeader ? "Border" : ""}
-          colors={[colors?.border.subtle, colors?.border.default]}
-          names={["Subtle", "Default"]}
+          colors={[
+            colors?.border.subtle,
+            colors?.border.default,
+            colors?.border.strong,
+          ]}
+          names={["Subtle", "Default", "Strong"]}
         />
         <Group
           showColorMeta={showColorMeta}
@@ -96,7 +101,7 @@ export const Scale = ({
             colors?.solid.hover,
             colors?.solid.active,
           ]}
-          names={["Normal", "Hover", "Active"]}
+          names={["Default", "Hover", "Active"]}
         />
         <Group
           showColorMeta={showColorMeta}

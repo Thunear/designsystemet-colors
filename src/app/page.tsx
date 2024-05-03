@@ -100,28 +100,28 @@ const mapTokens = () => {
   setToken("--fds-semantic-border-input-default", "var(--grey7)");
 
   // Solid normal
-  setToken("--fds-semantic-border-input-hover", "var(--accent8)");
-  setToken("--fds-semantic-border-action-default", "var(--accent8)");
-  setToken("--fds-semantic-surface-success-default", "var(--accent8)");
-  setToken("--fds-semantic-surface-action-first-default", "var(--accent8)");
-  setToken("--fds-semantic-border-action-first-default", "var(--accent8)");
+  setToken("--fds-semantic-border-input-hover", "var(--accent9)");
+  setToken("--fds-semantic-border-action-default", "var(--accent9)");
+  setToken("--fds-semantic-surface-success-default", "var(--accent9)");
+  setToken("--fds-semantic-surface-action-first-default", "var(--accent9)");
+  setToken("--fds-semantic-border-action-first-default", "var(--accent9)");
 
   // Solid hover
-  setToken("--fds-semantic-surface-success-hover", "var(--accent9)");
-  setToken("--fds-semantic-surface-action-first-hover", "var(--accent9)");
+  setToken("--fds-semantic-surface-success-hover", "var(--accent10)");
+  setToken("--fds-semantic-surface-action-first-hover", "var(--accent10)");
 
   // Solid active
-  setToken("--fds-semantic-surface-action-first-active", "var(--accent10)");
+  setToken("--fds-semantic-surface-action-first-active", "var(--accent11)");
 
   // Text subtle
-  setToken("--fds-semantic-text-neutral-subtle", "var(--grey11)");
-  setToken("--fds-semantic-text-action-hover", "var(--accent11)");
-  setToken("--fds-semantic-text-action-first-hover", "var(--accent11)");
-  setToken("--fds-semantic-text-action-first-default", "var(--accent11)");
-  setToken("--fds-semantic-text-action-default", "var(--accent11)");
+  setToken("--fds-semantic-text-neutral-subtle", "var(--grey12)");
+  setToken("--fds-semantic-text-action-hover", "var(--accent12)");
+  setToken("--fds-semantic-text-action-first-hover", "var(--accent12)");
+  setToken("--fds-semantic-text-action-first-default", "var(--accent12)");
+  setToken("--fds-semantic-text-action-default", "var(--accent12)");
 
   // Text default
-  setToken("--fds-semantic-text-neutral-default", "var(--grey12)");
+  setToken("--fds-semantic-text-neutral-default", "var(--grey13)");
 
   // Custom
   setToken("--background", "var(--grey1)");
@@ -171,16 +171,45 @@ export default function Home() {
           <div>
             <h1 className={classes.title}>Sett opp fargetema</h1>
           </div>
+          <div className={classes.pickers}>
+            <ColorPicker
+              label="Accent"
+              defaultColor="#0062BA"
+              onColorChanged={(e: any) => {
+                setAccentColor(e);
+              }}
+            />
+            <ColorPicker
+              label="Neutral"
+              defaultColor="#1E2B3C"
+              onColorChanged={(e: any) => {
+                setGreyColor(e);
+              }}
+            />
+            <ColorPicker
+              label="Brandfarge 1"
+              defaultColor="#F45F63"
+              onColorChanged={(e: any) => {
+                setBrandOneColor(e);
+              }}
+            />
+            <ColorPicker
+              label="Brandfarge 2"
+              defaultColor="#E5AA20"
+              onColorChanged={(e: any) => {
+                setBrandTwoColor(e);
+              }}
+            />
+            <ColorPicker
+              label="Brandfarge 3"
+              defaultColor="#1E98F5"
+              onColorChanged={(e: any) => {
+                setBrandThreeColor(e);
+              }}
+            />
+          </div>
           <div className={classes.rows}>
             <div className={classes.row}>
-              <ColorPicker
-                label="Accent"
-                defaultColor="#0062BA"
-                onColorChanged={(e: any) => {
-                  setAccentColor(e);
-                }}
-              />
-              {getContrastSection(getContrastFromHex(accentColor, "#ffffff"))}
               <Scale
                 color={accentColor}
                 showHeader
@@ -190,14 +219,6 @@ export default function Home() {
               />
             </div>
             <div className={classes.row}>
-              <ColorPicker
-                label="Neutral"
-                defaultColor="#1E2B3C"
-                onColorChanged={(e: any) => {
-                  setGreyColor(e);
-                }}
-              />
-              {getContrastSection(getContrastFromHex(greyColor, "#ffffff"))}
               <Scale
                 color={greyColor}
                 showColorMeta={false}
@@ -207,13 +228,6 @@ export default function Home() {
             </div>
 
             <div className={classes.row}>
-              <ColorPicker
-                label="Brandfarge 1"
-                defaultColor="#F45F63"
-                onColorChanged={(e: any) => {
-                  setBrandOneColor(e);
-                }}
-              />
               <Scale
                 color={brandOneColor}
                 showColorMeta={false}
@@ -222,13 +236,6 @@ export default function Home() {
               />
             </div>
             <div className={classes.row}>
-              <ColorPicker
-                label="Brandfarge 2"
-                defaultColor="#E5AA20"
-                onColorChanged={(e: any) => {
-                  setBrandTwoColor(e);
-                }}
-              />
               <Scale
                 color={brandTwoColor}
                 showColorMeta={false}
@@ -238,13 +245,6 @@ export default function Home() {
             </div>
 
             <div className={classes.row}>
-              <ColorPicker
-                label="Brandfarge 3"
-                defaultColor="#1E98F5"
-                onColorChanged={(e: any) => {
-                  setBrandThreeColor(e);
-                }}
-              />
               <Scale
                 color={brandThreeColor}
                 showColorMeta={false}

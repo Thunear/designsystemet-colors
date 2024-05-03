@@ -47,11 +47,11 @@ export const generateColorScale = (
   let lightnessScale: number[] = [];
 
   if (mode === "light") {
-    lightnessScale = [100, 96, 93, 86, 79, 81, 58, 34, 20];
+    lightnessScale = [100, 96, 93, 86, 79, 81, 58, 35, 34, 20];
   } else if (mode === "dark") {
-    lightnessScale = [14, 10, 20, 24, 28, 35, 45, 70, 82];
+    lightnessScale = [14, 10, 20, 24, 28, 35, 45, 25, 70, 82];
   } else {
-    lightnessScale = [7, 2, 12, 15, 18, 45, 55, 80, 92];
+    lightnessScale = [7, 2, 12, 15, 18, 45, 55, 45, 80, 92];
   }
 
   const getColorContrasts = (
@@ -70,7 +70,7 @@ export const generateColorScale = (
     ratios: [
       ...getColorContrasts(
         color,
-        lightnessScale.slice(0, 7),
+        lightnessScale.slice(0, 8),
         leoBackgroundColor.colorKeys[0]
       ),
       solidContrast,
@@ -78,7 +78,7 @@ export const generateColorScale = (
       solidActiveContrast,
       ...getColorContrasts(
         color,
-        lightnessScale.slice(7),
+        lightnessScale.slice(8),
         leoBackgroundColor.colorKeys[0]
       ),
     ],
@@ -109,15 +109,16 @@ export const generateColorScale = (
     border: {
       subtle: setColorObject(themeValues[5]),
       default: setColorObject(themeValues[6]),
+      strong: setColorObject(themeValues[7]),
     },
     solid: {
-      normal: setColorObject(themeValues[7]),
-      hover: setColorObject(themeValues[8]),
-      active: setColorObject(themeValues[9]),
+      normal: setColorObject(themeValues[8]),
+      hover: setColorObject(themeValues[9]),
+      active: setColorObject(themeValues[10]),
     },
     text: {
-      subtle: setColorObject(themeValues[10]),
-      default: setColorObject(themeValues[11]),
+      subtle: setColorObject(themeValues[11]),
+      default: setColorObject(themeValues[12]),
     },
   };
 

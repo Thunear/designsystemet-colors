@@ -51,7 +51,7 @@
 
 .userField input {
   background-color: var(--grey1);
-  color: var(--grey12);
+  color: var(--grey13);
 }
 
 .userBtn {
@@ -74,7 +74,7 @@
 }
 
 .table button {
-  color: var(--grey12);
+  color: var(--grey13);
 }
 
 .table thead button {
@@ -118,7 +118,7 @@
 
 .tableSearch input {
   background-color: var(--grey1);
-  color: var(--grey12);
+  color: var(--grey13);
 }
 
 .tableBtn {
@@ -139,29 +139,29 @@
   border-color: var(--fds-semantic-border-first);
 }
 .helpFirstTitle {
-  color: var(--brandOne11);
+  color: var(--brandOne12);
 }
 .helpFirstDesc {
-  color: var(--brandOne11);
+  color: var(--brandOne12);
 }
 
 .helpSecond {
   border-color: var(--fds-semantic-border-second);
 }
 .helpSecondTitle {
-  color: var(--brandTwo11);
+  color: var(--brandTwo12);
 }
 .helpSecondDesc {
-  color: var(--brandTwo11);
+  color: var(--brandTwo12);
 }
 .helpThird {
   border-color: var(--fds-semantic-border-third);
 }
 .helpThirdTitle {
-  color: var(--brandThree11);
+  color: var(--brandThree12);
 }
 .helpThirdDesc {
-  color: var(--brandThree11);
+  color: var(--brandThree12);
 }
 
 .helpHeader {

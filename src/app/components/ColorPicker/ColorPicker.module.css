@@ -1,7 +1,7 @@
 .picker {
   border-radius: 4px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
 }
 
 .container {
@@ -9,10 +9,10 @@
   align-items: center;
   border-radius: 4px;
   cursor: pointer;
-  border: 1px solid rgb(214, 214, 214);
-  height: 52px;
-  padding-left: 12px;
+  height: 48px;
+  padding-left: 10px;
   transition: 0.04s all;
+  border: 1px solid rgb(214, 214, 214);
 }
 
 .container:hover {
@@ -21,8 +21,8 @@
 }
 
 .color {
-  height: 28px;
-  width: 28px;
+  height: 24px;
+  width: 24px;
   background-color: #1e98f5;
   border-radius: 50%;
   border: 1px solid rgb(206, 206, 206);
@@ -48,9 +48,8 @@
 }
 
 .label {
-  margin-bottom: 0px;
+  margin-bottom: 12px;
   font-size: 16px;
-  width: 142px;
 }
 
 .popup {
