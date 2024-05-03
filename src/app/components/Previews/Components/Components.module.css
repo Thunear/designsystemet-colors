@@ -10,7 +10,8 @@
   grid-template-areas:
     "checkbox checkbox checkbox user user user table table table table table table"
     "help help help help help help radio radio radio tag tag tag"
-    "tabs tabs tabs tabs test test test faq faq faq faq faq";
+    "tabs tabs tabs tabs test test test faq faq faq faq faq"
+    "footerOne footerOne footerOne footerOne footerTwo footerTwo footerTwo footerTwo footerThree footerThree footerThree footerThree";
   column-gap: 24px;
   row-gap: 24px;
 }
@@ -218,4 +219,29 @@
 .accordion > div:first-child button {
   border: none;
   border-radius: 4px 4px 0 0;
+}
+
+.footerOne {
+  grid-area: footerOne;
+  background-color: var(--brandOne9);
+}
+
+.footerTwo {
+  grid-area: footerTwo;
+  background-color: var(--brandTwo9);
+}
+
+.footerThree {
+  grid-area: footerThree;
+  background-color: var(--brandThree9);
+}
+
+.footerHeading {
+  margin-bottom: 14px;
+}
+
+.footerList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

@@ -285,6 +285,45 @@ export const Components = () => {
         </Accordion>
       </div>
       <div className={cn(classes.card, classes.test)}>f</div>
+
+      <div className={cn(classes.card, classes.footerOne)}>
+        <Heading
+          size="xsmall"
+          className={cn(classes.footerHeading, classes.footerOneHeading)}
+        >
+          Om nettstedet
+        </Heading>
+      </div>
+      <div className={cn(classes.card, classes.footerTwo)}>
+        <Heading
+          size="xsmall"
+          className={cn(classes.footerHeading, classes.footerTwoHeading)}
+        >
+          Nyttige lenker
+        </Heading>
+        <div className={cn(classes.footerList)}>
+          <Link className={cn(classes.footerItem)} href="#">
+            Peronvernærklæring
+          </Link>
+          <Link className={cn(classes.footerItem)} href="#">
+            Peronvernærklæring
+          </Link>
+          <Link className={cn(classes.footerItem)} href="#">
+            Peronvernærklæring
+          </Link>
+          <Link className={cn(classes.footerItem)} href="#">
+            Peronvernærklæring
+          </Link>
+        </div>
+      </div>
+      <div className={cn(classes.card, classes.footerThree)}>
+        <Heading
+          size="xsmall"
+          className={cn(classes.footerHeading, classes.footerThreeHeading)}
+        >
+          Kontakt oss
+        </Heading>
+      </div>
     </div>
   );
 };

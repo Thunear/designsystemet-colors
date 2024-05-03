@@ -2,9 +2,8 @@ import classes from "./Scale.module.css";
 import { Group } from "../Group/Group";
 import { SetStateAction, useEffect, useState } from "react";
 import { CssColor } from "@adobe/leonardo-contrast-colors";
-import { tokenMapping as tokens } from "@/utils/tokenMapping";
 import { generateColorScale } from "@/utils/themeUtils";
-import { modeType, colorType, colorsType } from "@/types";
+import { modeType, colorsType } from "@/types";
 
 type ScaleProps = {
   color: CssColor;
@@ -50,6 +49,8 @@ export const Scale = ({
       normal: { color: "#ffffff", contrast: "", lightness: "" },
       hover: { color: "#ffffff", contrast: "", lightness: "" },
       active: { color: "#ffffff", contrast: "", lightness: "" },
+      contrastOne: { color: "#ffffff", contrast: "", lightness: "" },
+      contrastTwo: { color: "#ffffff", contrast: "", lightness: "" },
     },
     text: {
       subtle: { color: "#ffffff", contrast: "", lightness: "" },
@@ -100,8 +101,10 @@ export const Scale = ({
             colors?.solid.normal,
             colors?.solid.hover,
             colors?.solid.active,
+            colors?.border.subtle,
+            colors?.border.subtle,
           ]}
-          names={["Default", "Hover", "Active"]}
+          names={["Default", "Hover", "Active", "Contrast 1", "Contrast 2"]}
         />
         <Group
           showColorMeta={showColorMeta}
