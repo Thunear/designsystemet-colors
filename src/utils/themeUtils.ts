@@ -160,7 +160,7 @@ export const setContrastOneColor = (
       : colorLightness - doubleALightnessModifier;
 
   if (type === "first") {
-    targetLightness = targetLightness > 50 ? 97 : 3;
+    targetLightness = targetLightness > 50 ? 100 : 10;
   }
 
   const t = createTheme(color, targetLightness);
