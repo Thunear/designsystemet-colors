@@ -293,6 +293,20 @@ export const Components = () => {
         >
           Om nettstedet
         </Heading>
+        <div className={cn(classes.footerList)}>
+          <Link className={cn(classes.footerItem)} href="#">
+            Peronvernærklæring
+          </Link>
+          <Link className={cn(classes.footerItem)} href="#">
+            Peronvernærklæring
+          </Link>
+          <Link className={cn(classes.footerItem)} href="#">
+            Peronvernærklæring
+          </Link>
+          <Link className={cn(classes.footerItem)} href="#">
+            Peronvernærklæring
+          </Link>
+        </div>
       </div>
       <div className={cn(classes.card, classes.footerTwo)}>
         <Heading
@@ -323,6 +337,20 @@ export const Components = () => {
         >
           Kontakt oss
         </Heading>
+        <div className={cn(classes.footerList)}>
+          <Link className={cn(classes.footerItem)} href="#">
+            Peronvernærklæring
+          </Link>
+          <Link className={cn(classes.footerItem)} href="#">
+            Peronvernærklæring
+          </Link>
+          <Link className={cn(classes.footerItem)} href="#">
+            Peronvernærklæring
+          </Link>
+          <Link className={cn(classes.footerItem)} href="#">
+            Peronvernærklæring
+          </Link>
+        </div>
       </div>
     </div>
   );

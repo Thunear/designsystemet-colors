@@ -5,8 +5,14 @@ import {
   CssColor,
   Theme,
 } from "@adobe/leonardo-contrast-colors";
-import { getContrastFromLightness, getLightnessFromHex } from "./ColorUtils";
+import {
+  getContrastFromHex,
+  getContrastFromLightness,
+  getLightnessFromHex,
+  getRatioFromLum,
+} from "./ColorUtils";
 import { modeType, colorsType } from "@/types";
+import { get } from "http";
 
 type outputType = "flat" | "object";
 
@@ -91,6 +97,8 @@ export const generateColorScale = (
   });
 
   if (outputType === "flat") {
+    let flatArr = theme.contrastColorValues;
+    flatArr.push(setContrastOneColor(color).color as CssColor);
     return theme.contrastColorValues;
   }
 
@@ -116,7 +124,7 @@ export const generateColorScale = (
       hover: setColorObject(themeValues[9]),
       active: setColorObject(themeValues[10]),
       contrastOne: setContrastOneColor(color),
-      contrastTwo: setContrastTwoColor(color),
+      contrastTwo: setContrastOneColor(color),
     },
     text: {
       subtle: setColorObject(themeValues[11]),
@@ -128,11 +136,84 @@ export const generateColorScale = (
 };
 
 const setContrastOneColor = (color: CssColor) => {
-  return "#ffffff";
+  const outputColor = {
+    color: "#ffffff",
+    contrast: "d",
+    lightness: "5",
+  };
+  const contrastWhite = getContrastFromHex(color, "#ffffff");
+  const contrastBlack = getContrastFromHex(color, "#000000");
+  const colorLightness = getLightnessFromHex(color);
+  const doubleALightnessModifier = 47;
+  let targetLightness = 0;
+  const contrastDirection =
+    contrastWhite > contrastBlack ? "lighten" : "darken";
+
+  targetLightness =
+    contrastDirection === "lighten"
+      ? colorLightness + doubleALightnessModifier
+      : colorLightness - doubleALightnessModifier;
+  const t = createTheme(color, targetLightness);
+  outputColor.color = t;
+  console.log("contrastWhite: ", contrastWhite.toFixed(2));
+  console.log("contrastBlack: ", contrastBlack.toFixed(2));
+  console.log("contrastDirection: ", contrastDirection);
+  console.log("colorLightness: ", colorLightness);
+  console.log("targetLightness: ", targetLightness);
+  console.log("targetColor: ", t);
+
+  return outputColor;
 };
 
-const setContrastTwoColor = (color: CssColor) => {
-  return "#ffffff";
+export const setContrastTwoColor = (color: CssColor) => {
+  const outputColor = {
+    color: "#ffffff",
+    contrast: "d",
+    lightness: "5",
+  };
+  const contrastWhite = getContrastFromHex(color, "#ffffff");
+  const colorLightness = getLightnessFromHex(color);
+  const contrastBlack = getContrastFromHex(color, "#000000");
+  const doubleALightnessModifier = 47;
+  let targetLightness = 0;
+  const contrastDirection =
+    contrastWhite > contrastBlack ? "lighten" : "darken";
+
+  targetLightness =
+    contrastDirection === "lighten"
+      ? colorLightness + doubleALightnessModifier
+      : colorLightness - doubleALightnessModifier;
+
+  console.log("contrastWhite: ", contrastWhite.toFixed(2));
+  console.log("contrastBlack: ", contrastBlack.toFixed(2));
+  console.log("contrastDirection: ", contrastDirection);
+  console.log("colorLightness: ", colorLightness);
+  console.log("targetLightness: ", targetLightness);
+  const t = createTheme(color, targetLightness);
+  outputColor.color = t;
+  console.log("targetColor: ", t);
+
+  return outputColor;
+};
+
+const createTheme = (color: CssColor, lightness: number) => {
+  let leoBackgroundColor = new BackgroundColor({
+    name: "backgroundColor",
+    colorKeys: ["#ffffff"],
+    ratios: [1],
+  });
+  let colors = new Color({
+    name: "color",
+    colorKeys: [color],
+    ratios: [getContrastFromLightness(lightness, color, "#ffffff")],
+  });
+
+  let theme = new Theme({
+    colors: [colors],
+    backgroundColor: leoBackgroundColor,
+    lightness: 100,
+  });
+  return theme.contrastColorValues[0];
 };
 
 const setColorObject = (themeValues: ContrastColorValue) => {

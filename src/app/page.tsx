@@ -7,18 +7,28 @@ import { Header } from "./components/Header/Header";
 import { Scale } from "./components/Scale/Scale";
 import { ColorPicker } from "./components/ColorPicker/ColorPicker";
 import { useEffect, useState } from "react";
-import { CssColor } from "@adobe/leonardo-contrast-colors";
+import {
+  BackgroundColor,
+  Color,
+  CssColor,
+  Theme,
+} from "@adobe/leonardo-contrast-colors";
 import { PreviewBox } from "./components/PreviewBox/PreviewBox";
 import { Container, Row, Col } from "react-bootstrap";
 import { tokenMapping } from "@/utils/tokenMapping";
 import { CheckmarkIcon, XMarkIcon } from "@navikt/aksel-icons";
 import { Dashboard } from "./components/Previews/Dashboard/Dashboard";
-import { getContrastFromHex } from "@/utils/ColorUtils";
+import {
+  getContrastFromHex,
+  getContrastFromLightness,
+  getLightnessFromHex,
+} from "@/utils/ColorUtils";
 
 import cn from "classnames";
 import { Button, DropdownMenu } from "@digdir/designsystemet-react";
 import { Landing } from "./components/Previews/Landing/Landing";
 import { Components } from "./components/Previews/Components/Components";
+import { setContrastTwoColor } from "@/utils/themeUtils";
 
 type modeType = "light" | "dark" | "contrast";
 type previewModeType =
@@ -137,6 +147,7 @@ export default function Home() {
   const [previewMode, setPreviewMode] = useState<previewModeType>("components");
 
   useEffect(() => {
+    const a = setContrastTwoColor("#0062BA");
     mapTokens();
   }, []);
 

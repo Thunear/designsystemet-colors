@@ -226,14 +226,28 @@
   background-color: var(--brandOne9);
 }
 
+.footerOne h1,
+.footerOne a {
+  color: var(--brandOne14);
+}
+
 .footerTwo {
   grid-area: footerTwo;
   background-color: var(--brandTwo9);
 }
 
+.footerTwo h1,
+.footerTwo a {
+  color: var(--brandTwo14);
+}
+
 .footerThree {
   grid-area: footerThree;
   background-color: var(--brandThree9);
+}
+
+.footerThree h1 {
+  color: var(--brandThree14);
 }
 
 .footerHeading {
