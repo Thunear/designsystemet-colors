@@ -3,6 +3,7 @@ import classes from "./Components.module.css";
 import cn from "classnames";
 import {
   Checkbox,
+  Switch,
   Heading,
   Paragraph,
   Textfield,
@@ -284,7 +285,24 @@ export const Components = () => {
           </Accordion.Item>
         </Accordion>
       </div>
-      <div className={cn(classes.card, classes.test)}>f</div>
+      <div className={cn(classes.card, classes.test)}>
+        <Heading
+          size="xsmall"
+          className={cn(classes.footerHeading, classes.switchHeading)}
+        >
+          Innstillinger
+        </Heading>
+        <Paragraph size="small" className={classes.switchParagraph}>
+          Her kan du justere på innstillingene dine.
+        </Paragraph>
+        <div className={classes.switchGroup}>
+          <Switch size="small">Desktopvisning</Switch>
+          <Switch size="small" checked>
+            Tabletvisning
+          </Switch>
+          <Switch size="small">Mobilvisning</Switch>
+        </div>
+      </div>
 
       <div className={cn(classes.card, classes.footerOne)}>
         <Heading

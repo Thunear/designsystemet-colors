@@ -269,3 +269,17 @@
   flex-direction: column;
   gap: 20px;
 }
+
+.switchGroup {
+  display: flex;
+  gap: 26px;
+  flex-direction: column;
+}
+
+.switchHeading {
+  margin-bottom: 12px;
+}
+
+.switchParagraph {
+  margin-bottom: 20px;
+}
