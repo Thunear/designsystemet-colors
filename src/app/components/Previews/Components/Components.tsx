@@ -241,10 +241,16 @@ export const Components = () => {
             <Tabs.Tab value="value2">Tjenester</Tabs.Tab>
             <Tabs.Tab value="value3">Innstillinger</Tabs.Tab>
           </Tabs.List>
-          <Tabs.Content value="value1">content 1</Tabs.Content>
-          <Tabs.Content value="value2">content 2</Tabs.Content>
-          <Tabs.Content value="value3">content 3</Tabs.Content>
         </Tabs>
+        <Paragraph size="small">
+          For å kunne bli registrert i{" "}
+          <Link href="#">Frivillighetsregisteret</Link>, må organisasjonen drive
+          frivillig virksomhet. Det er bare foreninger,{" "}
+          <Link href="#">stiftelser</Link> og som kan registreres. Virksomheten
+          kan ikke dele ut midler til fysiske personer. Virksomheten må ha et
+          styre. Virksomheten må være registrert i{" "}
+          <Link href="#">Enhetsregisteret</Link> før den kan bli registrert.
+        </Paragraph>
       </div>
       <div className={cn(classes.card, classes.faq)}>
         <Heading size="xsmall" className={classes.cardTitle}>

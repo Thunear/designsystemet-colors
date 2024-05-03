@@ -205,6 +205,13 @@
 
 .tabs {
   grid-area: tabs;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+.tabs button {
+  min-height: 40px;
 }
 
 .faq {
