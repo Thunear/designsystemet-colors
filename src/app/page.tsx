@@ -148,7 +148,7 @@ export default function Home() {
   const [previewMode, setPreviewMode] = useState<previewModeType>("components");
 
   useEffect(() => {
-    setContrastOneColor("#0062BA", "first", true);
+    setContrastOneColor("#000000", "first", true);
     mapTokens();
   }, []);
 

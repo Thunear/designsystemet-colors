@@ -149,18 +149,27 @@ export const setContrastOneColor = (
   const contrastWhite = getContrastFromHex(color, "#ffffff");
   const contrastBlack = getContrastFromHex(color, "#000000");
   const colorLightness = getLightnessFromHex(color);
-  const doubleALightnessModifier = 47;
+  const doubleALightnessModifier = 50;
   let targetLightness = 0;
   const contrastDirection =
-    contrastWhite > contrastBlack ? "lighten" : "darken";
+    contrastWhite >= contrastBlack ? "lighten" : "darken";
 
   targetLightness =
     contrastDirection === "lighten"
       ? colorLightness + doubleALightnessModifier
       : colorLightness - doubleALightnessModifier;
 
+  if (dev) {
+    console.log("targetLightness before: ", targetLightness);
+    console.log("contrastDirection: ", contrastDirection);
+  }
+
   if (type === "first") {
-    targetLightness = targetLightness > 50 ? 100 : 10;
+    if (contrastDirection === "lighten") {
+      targetLightness = 98;
+    } else {
+      targetLightness = 15;
+    }
   }
 
   const t = createTheme(color, targetLightness);
