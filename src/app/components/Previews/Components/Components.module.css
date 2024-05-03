@@ -226,9 +226,12 @@
   background-color: var(--brandOne9);
 }
 
-.footerOne h1,
-.footerOne a {
+.footerOne h1 {
   color: var(--brandOne14);
+}
+
+.footerOne a {
+  color: var(--brandOne15);
 }
 
 .footerTwo {
@@ -236,9 +239,12 @@
   background-color: var(--brandTwo9);
 }
 
-.footerTwo h1,
-.footerTwo a {
+.footerTwo h1 {
   color: var(--brandTwo14);
+}
+
+.footerTwo a {
+  color: var(--brandTwo15);
 }
 
 .footerThree {
@@ -248,6 +254,10 @@
 
 .footerThree h1 {
   color: var(--brandThree14);
+}
+
+.footerThree a {
+  color: var(--brandThree15);
 }
 
 .footerHeading {

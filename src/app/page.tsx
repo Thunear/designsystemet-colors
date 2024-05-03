@@ -28,6 +28,7 @@ import cn from "classnames";
 import { Button, DropdownMenu } from "@digdir/designsystemet-react";
 import { Landing } from "./components/Previews/Landing/Landing";
 import { Components } from "./components/Previews/Components/Components";
+import { setContrastOneColor } from "@/utils/themeUtils";
 
 type modeType = "light" | "dark" | "contrast";
 type previewModeType =
@@ -147,6 +148,7 @@ export default function Home() {
   const [previewMode, setPreviewMode] = useState<previewModeType>("components");
 
   useEffect(() => {
+    setContrastOneColor("#0062BA", "first", true);
     mapTokens();
   }, []);
 

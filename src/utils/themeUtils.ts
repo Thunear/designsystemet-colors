@@ -98,7 +98,8 @@ export const generateColorScale = (
 
   if (outputType === "flat") {
     let flatArr = theme.contrastColorValues;
-    flatArr.push(setContrastOneColor(color).color as CssColor);
+    flatArr.push(setContrastOneColor(color, "first").color as CssColor);
+    flatArr.push(setContrastOneColor(color, "second").color as CssColor);
     return theme.contrastColorValues;
   }
 
@@ -123,8 +124,8 @@ export const generateColorScale = (
       normal: setColorObject(themeValues[8]),
       hover: setColorObject(themeValues[9]),
       active: setColorObject(themeValues[10]),
-      contrastOne: setContrastOneColor(themeValues[10].value),
-      contrastTwo: setContrastOneColor(color),
+      contrastOne: setContrastOneColor(color, "first"),
+      contrastTwo: setContrastOneColor(color, "second"),
     },
     text: {
       subtle: setColorObject(themeValues[11]),
@@ -135,7 +136,11 @@ export const generateColorScale = (
   return output;
 };
 
-const setContrastOneColor = (color: CssColor) => {
+export const setContrastOneColor = (
+  color: CssColor,
+  type: "first" | "second",
+  dev: boolean = false
+) => {
   const outputColor = {
     color: "#ffffff",
     contrast: "d",
@@ -153,8 +158,17 @@ const setContrastOneColor = (color: CssColor) => {
     contrastDirection === "lighten"
       ? colorLightness + doubleALightnessModifier
       : colorLightness - doubleALightnessModifier;
+
+  if (type === "first") {
+    targetLightness = targetLightness > 50 ? 97 : 3;
+  }
+
   const t = createTheme(color, targetLightness);
   outputColor.color = t;
+
+  if (dev) {
+    console.log("targetLightness: ", targetLightness);
+  }
 
   return outputColor;
 };
