@@ -169,7 +169,7 @@ export default function Home() {
       if (i === 0) {
         obj[type] = {};
       }
-      obj[type][i] = { value: colorsFlat[i], type: "color" };
+      obj[type][i + 1] = { value: colorsFlat[i], type: "color" };
     }
     console.log(colorsFlat);
 
