@@ -264,7 +264,7 @@ export default function Home() {
                     <ChevronDownIcon title="a11y-title" fontSize="1.5rem" />
                   </DropdownMenu.Trigger>
                   <DropdownMenu.Content>
-                    <DropdownMenu.Group>
+                    <DropdownMenu.Group heading="JSON format">
                       <DropdownMenu.Item
                         onClick={() => Tomato(accentColor, "accent")}
                       >
@@ -288,7 +288,7 @@ export default function Home() {
                       <DropdownMenu.Item
                         onClick={() => Tomato(brandThreeColor, "brand3")}
                       >
-                        brand 3
+                        Brand 3
                       </DropdownMenu.Item>
                     </DropdownMenu.Group>
                   </DropdownMenu.Content>
