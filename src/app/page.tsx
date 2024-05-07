@@ -315,7 +315,7 @@ export default function Home() {
               />
             </div>
 
-            <div className={classes.row}>
+            <div className={cn(classes.row, classes.brandRow)}>
               <Scale
                 color={brandOneColor}
                 showColorMeta={false}
