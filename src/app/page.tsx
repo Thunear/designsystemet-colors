@@ -16,7 +16,7 @@ import {
 import { PreviewBox } from "./components/PreviewBox/PreviewBox";
 import { Container, Row, Col } from "react-bootstrap";
 import { tokenMapping } from "@/utils/tokenMapping";
-import { CheckmarkIcon, XMarkIcon } from "@navikt/aksel-icons";
+import { CheckmarkIcon, ChevronDownIcon, XMarkIcon } from "@navikt/aksel-icons";
 import { Dashboard } from "./components/Previews/Dashboard/Dashboard";
 import {
   getContrastFromHex,
@@ -28,7 +28,7 @@ import cn from "classnames";
 import { Button, DropdownMenu } from "@digdir/designsystemet-react";
 import { Landing } from "./components/Previews/Landing/Landing";
 import { Components } from "./components/Previews/Components/Components";
-import { setContrastOneColor } from "@/utils/themeUtils";
+import { generateColorScale, setContrastOneColor } from "@/utils/themeUtils";
 
 type modeType = "light" | "dark" | "contrast";
 type previewModeType =
@@ -160,6 +160,24 @@ export default function Home() {
     };
   });
 
+  const Tomato = (color: CssColor, type: string) => {
+    const colorsFlat = generateColorScale(color, "light", "flat");
+
+    let obj = {};
+
+    for (let i = 0; i < colorsFlat.length; i++) {
+      if (i === 0) {
+        obj[type] = {};
+      }
+      obj[type][i] = { value: colorsFlat[i], type: "color" };
+    }
+    console.log(colorsFlat);
+
+    const json = JSON.stringify(obj, null, "\t");
+    console.log(json);
+    navigator.clipboard.writeText(json);
+  };
+
   const isSticky = (e) => {
     const header = document.querySelector(".pickers");
     const scrollTop = window.scrollY;
@@ -236,6 +254,46 @@ export default function Home() {
                   setBrandThreeColor(e);
                 }}
               />
+              <div className={classes.dropdown}>
+                <DropdownMenu placement="bottom-end" size="small">
+                  <DropdownMenu.Trigger
+                    size="medium"
+                    className={classes.dropdownBtn}
+                  >
+                    Kopier
+                    <ChevronDownIcon title="a11y-title" fontSize="1.5rem" />
+                  </DropdownMenu.Trigger>
+                  <DropdownMenu.Content>
+                    <DropdownMenu.Group>
+                      <DropdownMenu.Item
+                        onClick={() => Tomato(accentColor, "accent")}
+                      >
+                        Accent
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Item
+                        onClick={() => Tomato(greyColor, "neutral")}
+                      >
+                        Neutral
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Item
+                        onClick={() => Tomato(brandOneColor, "brand1")}
+                      >
+                        Brand 1
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Item
+                        onClick={() => Tomato(brandTwoColor, "brand2")}
+                      >
+                        Brand 2
+                      </DropdownMenu.Item>
+                      <DropdownMenu.Item
+                        onClick={() => Tomato(brandThreeColor, "brand3")}
+                      >
+                        brand 3
+                      </DropdownMenu.Item>
+                    </DropdownMenu.Group>
+                  </DropdownMenu.Content>
+                </DropdownMenu>
+              </div>
             </div>
           </div>
           <div className={classes.rows}>

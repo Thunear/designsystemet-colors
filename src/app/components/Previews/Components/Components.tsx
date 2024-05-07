@@ -299,7 +299,7 @@ export const Components = () => {
           Innstillinger
         </Heading>
         <Paragraph size="small" className={classes.switchParagraph}>
-          Her kan du justere på innstillingene dine.
+          Her kan du justere på innstillingene dine
         </Paragraph>
         <div className={classes.switchGroup}>
           <Switch size="small">Desktopvisning</Switch>
