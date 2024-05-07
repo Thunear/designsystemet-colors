@@ -101,10 +101,8 @@ export const Scale = ({
             colors?.solid.normal,
             colors?.solid.hover,
             colors?.solid.active,
-            colors?.solid.contrastOne,
-            colors?.solid.contrastTwo,
           ]}
-          names={["Default", "Hover", "Active", "Contrast 1", "Contrast 2"]}
+          names={["Default", "Hover", "Active"]}
         />
         <Group
           showColorMeta={showColorMeta}
