@@ -1,6 +1,7 @@
 import classes from "./Group.module.css";
 import { Color } from "../Color/Color";
 import { CssColor } from "@adobe/leonardo-contrast-colors";
+import cn from "classnames";
 
 type ColorType = {
   color: CssColor;
@@ -13,12 +14,23 @@ type GroupProps = {
   colors: ColorType[];
   showColorMeta?: boolean;
   names?: string[];
+  featured?: boolean;
 };
 
-export const Group = ({ header, colors, showColorMeta, names }: GroupProps) => {
+export const Group = ({
+  header,
+  colors,
+  showColorMeta,
+  names,
+  featured = false,
+}: GroupProps) => {
   return (
     <div className={classes.group}>
-      {header && <div className={classes.header}>{header}</div>}
+      {header && (
+        <div className={cn(classes.header, { [classes.featured]: featured })}>
+          {header}
+        </div>
+      )}
       {header && names && (
         <div className={classes.names}>
           {names.map((name, index) => (
@@ -26,7 +38,9 @@ export const Group = ({ header, colors, showColorMeta, names }: GroupProps) => {
           ))}
         </div>
       )}
-      <div className={classes.colors}>
+      <div
+        className={cn(classes.colors, { [classes.colorsFeatured]: featured })}
+      >
         {colors.map(function (item, index) {
           return (
             <Color

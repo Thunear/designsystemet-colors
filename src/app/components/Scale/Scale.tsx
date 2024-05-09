@@ -72,7 +72,7 @@ export const Scale = ({
           header={showHeader ? "Background" : ""}
           colors={[colors?.background.subtle, colors?.background.default]}
           showColorMeta={showColorMeta}
-          names={["Default", "Subtle"]}
+          names={["1. Default", "2. Subtle"]}
         />
         <Group
           header={showHeader ? "Surface" : ""}
@@ -82,7 +82,7 @@ export const Scale = ({
             colors?.component.active,
           ]}
           showColorMeta={showColorMeta}
-          names={["Default", "Hover", "Active"]}
+          names={["3. Default", "4. Hover", "5. Active"]}
         />
         <Group
           showColorMeta={showColorMeta}
@@ -92,7 +92,7 @@ export const Scale = ({
             colors?.border.default,
             colors?.border.strong,
           ]}
-          names={["Subtle", "Default", "Strong"]}
+          names={["6. Subtle", "7. Default", "8. Strong"]}
         />
         <Group
           showColorMeta={showColorMeta}
@@ -102,13 +102,14 @@ export const Scale = ({
             colors?.solid.hover,
             colors?.solid.active,
           ]}
-          names={["Default", "Hover", "Active"]}
+          names={["9. Default", "10. Hover", "11. Active"]}
+          featured
         />
         <Group
           showColorMeta={showColorMeta}
           header={showHeader ? "Text" : ""}
           colors={[colors?.text.subtle, colors?.text.default]}
-          names={["Subtle", "Default"]}
+          names={["12. Subtle", "13. Default"]}
         />
       </div>
     </div>

@@ -9,10 +9,8 @@ import {
   getContrastFromHex,
   getContrastFromLightness,
   getLightnessFromHex,
-  getRatioFromLum,
 } from "./ColorUtils";
 import { modeType, colorsType } from "@/types";
-import { get } from "http";
 
 type outputType = "flat" | "object";
 
