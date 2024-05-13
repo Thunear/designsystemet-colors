@@ -50,8 +50,8 @@ export default function Home() {
     };
   });
 
-  const Tomato = (color: CssColor, type: string) => {
-    const colorsFlat = generateColorScale(color, "light", "flat");
+  const copyToClipboard = (color: CssColor, type: string) => {
+    const colorsFlat = generateColorScale(color, themeMode, "flat");
 
     let obj = {};
 
@@ -61,10 +61,8 @@ export default function Home() {
       }
       obj[type][i + 1] = { value: colorsFlat[i], type: "color" };
     }
-    console.log(colorsFlat);
 
     const json = JSON.stringify(obj, null, "\t");
-    console.log(json);
     navigator.clipboard.writeText(json);
   };
 
@@ -133,27 +131,29 @@ export default function Home() {
                   <DropdownMenu.Content>
                     <DropdownMenu.Group heading="JSON format">
                       <DropdownMenu.Item
-                        onClick={() => Tomato(accentColor, "accent")}
+                        onClick={() => copyToClipboard(accentColor, "accent")}
                       >
                         Accent
                       </DropdownMenu.Item>
                       <DropdownMenu.Item
-                        onClick={() => Tomato(greyColor, "neutral")}
+                        onClick={() => copyToClipboard(greyColor, "neutral")}
                       >
                         Neutral
                       </DropdownMenu.Item>
                       <DropdownMenu.Item
-                        onClick={() => Tomato(brandOneColor, "brand1")}
+                        onClick={() => copyToClipboard(brandOneColor, "brand1")}
                       >
                         Brand 1
                       </DropdownMenu.Item>
                       <DropdownMenu.Item
-                        onClick={() => Tomato(brandTwoColor, "brand2")}
+                        onClick={() => copyToClipboard(brandTwoColor, "brand2")}
                       >
                         Brand 2
                       </DropdownMenu.Item>
                       <DropdownMenu.Item
-                        onClick={() => Tomato(brandThreeColor, "brand3")}
+                        onClick={() =>
+                          copyToClipboard(brandThreeColor, "brand3")
+                        }
                       >
                         Brand 3
                       </DropdownMenu.Item>
