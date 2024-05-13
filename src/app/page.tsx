@@ -19,8 +19,8 @@ import { DropdownMenu } from "@digdir/designsystemet-react";
 import { Landing } from "./components/Previews/Landing/Landing";
 import { Components } from "./components/Previews/Components/Components";
 import { generateColorScale, setContrastOneColor } from "@/utils/themeUtils";
+import { modeType } from "@/types";
 
-type modeType = "light" | "dark" | "contrast";
 type previewModeType =
   | "dashboard"
   | "landing"
