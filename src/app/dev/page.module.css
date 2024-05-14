@@ -1,0 +1,31 @@
+.page {
+  margin-top: 32px;
+}
+
+.container {
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  background-color: red;
+  width: 33.33%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  flex-basis: auto;
+  padding: 24px;
+  border: 1px solid rgb(189, 189, 189);
+  margin-right: -1px;
+}
+
+.box {
+  width: 140px;
+  padding: 10px;
+  border-radius: 4px;
+}
